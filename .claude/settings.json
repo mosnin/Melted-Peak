@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚡ MELTED PEAK: You modified a file. Remember to update active/active_context.md and memory/recent_deltas.md if this change is outside the Melted Peak system files.'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚡ MELTED PEAK: Session ending. Have you run the handoff protocol? Update memory/session_handoff.md before stopping.'"
+          }
+        ]
+      }
+    ]
+  }
+}

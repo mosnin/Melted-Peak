@@ -21,19 +21,43 @@ Do NOT read all files on every boot. Use the context compiler to select relevant
 
 ---
 
-## Operational Rules
+## Critical Rules (Always Active)
+
+These rules are ALWAYS in effect. They are not suggestions.
+
+### Track What You've Tried
+When debugging or solving a problem, ALWAYS update the `## Attempted Solutions` section in `active/active_issue.md` BEFORE trying a different approach. Record:
+- What you tried
+- What happened
+- Why it didn't work
+
+This is the single most important rule for preventing circular problem-solving. If you find yourself trying something that's already listed in Attempted Solutions, STOP and re-evaluate your approach entirely.
+
+**Three-Strike Rule**: If three approaches have failed, STOP. Write a root cause analysis, present fundamentally different strategies to the user, and wait for direction. See `docs/core/15_error_recovery_protocol.md`.
+
+### One Issue at a Time
+- Only one `active/active_issue.md` may be active
+- If you discover a new issue during work, log it to `memory/known_issues.md` but do NOT switch to it
+- Switching requires explicit user authorization
+- See `docs/core/07_issue_isolation_protocol.md` for full protocol
+
+### Plan Before Changing Code
+- Before modifying any code file, write a change plan in `active/change_plan.md`
+- The plan must list: files to change, nature of changes, expected outcome, rollback approach
+- Exempt: typos, comments, formatting
+- See `docs/core/23_change_control_system.md` for full protocol
+
+### Verify After Changing Code
+- After changes, review `active/regression_checklist.md` for affected sensitive areas
+- Check what imports/calls the changed code
+- If a regression is found, STOP -- do not fix inline. Log to `memory/known_issues.md`
+- See `docs/core/25_regression_prevention.md` for full protocol
 
 ### Context Maintenance
 - Update `active/active_context.md` after completing each logical step
 - Append to `memory/recent_deltas.md` after every change to files outside Melted Peak
 - Update `memory/progress_log.md` after completing each task
 - ALWAYS run the session handoff protocol before ending a session
-
-### Engineering Discipline
-- ONE issue at a time. Follow `docs/core/07_issue_isolation_protocol.md`
-- ALWAYS write a change plan before modifying code. Follow `docs/core/23_change_control_system.md`
-- ALWAYS verify changes don't break existing work. Follow `docs/core/25_regression_prevention.md`
-- Never assume previous context is still accurate -- verify from files
 
 ### Component Management
 - New frameworks, skills, and knowledge MUST go through `incoming/` first
@@ -65,6 +89,8 @@ Do NOT read all files on every boot. Use the context compiler to select relevant
 - Do NOT use raw/unnormalized components from `incoming/`
 - Do NOT end a session without updating `memory/session_handoff.md`
 - Do NOT assume context from a previous session -- always verify from files
+- Do NOT try an approach that is already listed in `Attempted Solutions` without a fundamentally different angle
+- Do NOT silently deviate from a change plan -- update the plan first, then proceed
 
 ---
 

@@ -1,0 +1,52 @@
+# Protocol Cheat Sheet
+
+Quick reference for all protocols. Load this instead of individual protocol docs when context is tight. For full details, read the individual protocol file.
+
+---
+
+## Change Control (23)
+1. Write plan to `active/change_plan.md`: files, changes, risks, rollback
+2. Get user confirmation
+3. Execute in order. Log deviations.
+4. Run validation. Close plan.
+
+## Regression Prevention (25)
+1. Read `active/regression_checklist.md` -- is this area listed?
+2. Check what imports/calls the changed files
+3. Run `active/validation_plan.md`
+4. If regression found: STOP, log to `memory/known_issues.md`, do not fix inline
+5. Add new sensitive areas to checklist
+
+## Issue Isolation (07)
+- One active issue at a time
+- New issues go to `memory/known_issues.md`, not active work
+- Switch only with user authorization
+- On switch: pause current, clear plans, reload context
+
+## Session Handoff (06)
+Write to `memory/session_handoff.md`: summary, completed work, in-progress, blocked, decisions, next steps, modified files.
+Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_state.md`, `active/active_context.md`.
+
+## Error Recovery (15)
+- Log every attempt in `active/active_issue.md ## Attempted Solutions` BEFORE trying
+- Three failures = STOP, analyze root cause, present options to user
+- Circular pattern detected = STOP, re-read original problem, consider if real issue is elsewhere
+
+## Context Compiler (02)
+1. Classify work type: bug-fix | new-feature | refactor | investigation | ingestion | maintenance
+2. Load profile: active state + relevant protocols + component summaries
+3. Check registry for relevant components (status=ready, context_cost fits)
+4. Update `active/active_context.md` with loaded context
+
+## Ingestion (10) + Readiness Gate (11)
+1. Raw material → `incoming/`
+2. Normalize: source + manifest.yaml + summary.md
+3. Register in `docs/registry/` indexes
+4. Verify: all fields populated, source self-contained, status=ready
+5. Promote to `frameworks/` | `skills/` | `knowledge/`
+
+## Context Maintenance (03)
+- After each logical step → update `active/active_context.md`
+- After each file change outside MP → append `memory/recent_deltas.md`
+- After each task → update `memory/progress_log.md`
+- Scope change detected → STOP, re-run context compiler, update plans

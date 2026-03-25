@@ -154,9 +154,16 @@ When budget is tight:
 
 ---
 
+## Efficiency: Use the Cheat Sheet
+
+When context is tight, load `docs/core/99_protocol_cheatsheet.md` instead of individual protocol files. It contains condensed versions of all protocols in a single file. Only load full protocol docs when you need the detailed procedures.
+
+---
+
 ## Anti-Patterns
 
 - Loading all frameworks "just in case" -- wastes context
 - Loading full source when summary would suffice -- wastes context
 - Not running the compiler when switching tasks -- causes stale context
 - Ignoring `context_cost` in manifests -- leads to context overflow
+- Loading full protocol docs when the cheat sheet would suffice -- wastes context
