@@ -1,0 +1,21 @@
+name: "code-review"
+version: "1.0.0"
+status: "ready"
+description: "Structured code review workflow checking correctness, safety, consistency, and regressions"
+context_cost: "small"
+
+tags: [review, quality, safety, workflow]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [pre-commit, user-request-review, change-plan-completed, validation]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Supports three depth levels: quick, standard, deep."

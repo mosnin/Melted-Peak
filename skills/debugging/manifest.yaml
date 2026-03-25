@@ -1,0 +1,21 @@
+name: "debugging"
+version: "1.0.0"
+status: "ready"
+description: "Systematic bug diagnosis and fix workflow with circular-debugging prevention"
+context_cost: "small"
+
+tags: [debugging, bug-fix, diagnosis, workflow]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [bug-reported, test-failure, regression-detected, work-type-bug-fix]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Core workflow skill. Integrates with error recovery protocol and issue isolation."

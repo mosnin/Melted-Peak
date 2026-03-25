@@ -19,3 +19,27 @@ skills:
     tags: [system, boot, context]
     triggers: [session-start]
     description: Boot the Melted Peak context system at session start
+
+  - name: debugging
+    path: skills/debugging/
+    status: ready
+    context_cost: small
+    tags: [debugging, bug-fix, diagnosis, workflow]
+    triggers: [bug-reported, test-failure, regression-detected, work-type-bug-fix]
+    description: Systematic bug diagnosis and fix workflow with circular-debugging prevention
+
+  - name: code-review
+    path: skills/code-review/
+    status: ready
+    context_cost: small
+    tags: [review, quality, safety, workflow]
+    triggers: [pre-commit, user-request-review, change-plan-completed, validation]
+    description: Structured code review checking correctness, safety, consistency, and regressions
+
+  - name: dependency-update
+    path: skills/dependency-update/
+    status: ready
+    context_cost: small
+    tags: [dependencies, maintenance, security, workflow]
+    triggers: [dependency-update, security-vulnerability, work-type-maintenance]
+    description: Safe dependency update workflow with changelog review, risk assessment, and rollback

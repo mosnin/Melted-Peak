@@ -12,6 +12,12 @@ Defines how work is preserved between sessions. A clean handoff means the next s
 
 ## Handoff Procedure
 
+### Step 0: Rotate Memory Files
+
+Before writing new content, check if memory files need rotation per `docs/core/04_memory_rotation_protocol.md`:
+- Archive old entries from `recent_deltas.md`, `progress_log.md`, `change_log.md`
+- Move resolved issues from `known_issues.md` to `memory/archive/resolved_issues.md`
+
 ### Step 1: Summarize Progress
 
 Write to `memory/session_handoff.md` using this structure:

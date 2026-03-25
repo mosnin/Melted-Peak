@@ -1,0 +1,21 @@
+name: "dependency-update"
+version: "1.0.0"
+status: "ready"
+description: "Safe dependency update workflow with changelog review, risk assessment, and rollback"
+context_cost: "small"
+
+tags: [dependencies, maintenance, security, workflow]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [dependency-update, security-vulnerability, work-type-maintenance]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Covers both routine updates and security-driven updates."

@@ -50,3 +50,16 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - After each file change outside MP → append `memory/recent_deltas.md`
 - After each task → update `memory/progress_log.md`
 - Scope change detected → STOP, re-run context compiler, update plans
+
+## Memory Rotation (04)
+- Check file sizes during session handoff
+- `recent_deltas.md`: keep last 3 sessions, archive older to `memory/archive/deltas/`
+- `progress_log.md`: keep last 10 sessions, archive to `memory/archive/progress/`
+- `change_log.md`: keep last 20 entries, archive to `memory/archive/changes/`
+- `known_issues.md`: move resolved issues to `memory/archive/resolved_issues.md`
+
+## Project Integration (05)
+- MP as subdirectory: place in `.melted-peak/`, reference from project CLAUDE.md
+- MP at root: add project-specific section to bottom of CLAUDE.md
+- Rule priority: project code rules > MP process rules
+- Upgrade: back up memory/ and active/, replace docs/, restore backups
