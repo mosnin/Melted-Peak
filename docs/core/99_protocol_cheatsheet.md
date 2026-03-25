@@ -76,6 +76,15 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Updates: regression checklist, skills, context profiles, architecture decisions
 - Safety: protocol changes require user confirmation, one improvement at a time
 
+## Peak Management (skill)
+- `/peak import [source]` → validate structure → stage in `peaks/[name]/`
+- `/peak mount [name]` → conflict check → dependency check → register components → merge profiles → ready
+- `/peak unmount [name]` → dependency check → deregister → remove profiles → mark unmounted
+- `/peak create` → interview domain/stack → generate peak → mount
+- Peaks extend the context compiler via `peaks/active_profiles.yaml` (overlay, not core modification)
+- Peak-provided skills registered with namespace: `[peak-name]/[skill-name]`
+- Conflicts enforced: two peaks declaring each other in `conflicts.peaks` cannot coexist
+
 ## Self-Improvement Loops
 1. Pattern journal: log repeated workflows → skill router at 3 occurrences
 2. Context tracking: log used/unused components → tune compiler profiles

@@ -40,6 +40,7 @@ Melted-Peak/
 ├── frameworks/                  # Large system frameworks
 ├── skills/                      # Reusable workflow capabilities
 ├── knowledge/                   # Reference material
+├── peaks/                       # Importable domain sub-systems (frontend, backend, agents)
 ├── active/                      # Current working state (hot memory)
 ├── memory/                      # Continuity and progress (warm memory)
 └── incoming/                    # Staging area for new components

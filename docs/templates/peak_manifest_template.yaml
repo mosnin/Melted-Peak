@@ -1,0 +1,59 @@
+# Peak Manifest Template
+# Copy this file to peaks/[name]/peak.yaml
+#
+# A peak is a comprehensive, importable sub-system that extends Melted Peak
+# for a specific domain (frontend, backend, agents, etc.)
+
+name: ""                          # Unique identifier (lowercase, hyphens)
+version: "1.0.0"                  # Semantic versioning
+status: "draft"                   # draft | ready | deprecated | superseded | unmounted
+description: ""                   # One-line summary
+domain: ""                        # frontend | backend | fullstack | agents | devops |
+                                  # mobile | data | security | testing | infrastructure
+
+# What this peak provides to the system
+provides:
+  skills: []                      # Skill names, e.g., [component-scaffold, api-route-create]
+  knowledge: []                   # Knowledge pack names, e.g., [react-patterns, nextjs-routing]
+  templates: []                   # Template names, e.g., [component.tsx, api-route.ts]
+  profiles: []                    # Context profile names, e.g., [component-creation, api-work]
+
+# Tech stack this peak is designed for
+stack:
+  languages: []                   # e.g., [typescript, python]
+  frameworks: []                  # e.g., [nextjs, fastapi, langraph]
+  runtimes: []                    # e.g., [node, python3]
+  databases: []                   # e.g., [postgres, redis, supabase]
+  tools: []                       # e.g., [docker, prisma, tailwind]
+
+# Requirements and compatibility
+requires:
+  melted_peak_version: ">=1.0.0"  # Minimum Melted Peak version
+  peaks: []                       # Other peaks required, e.g., [typescript-base]
+  system: []                      # System requirements, e.g., ["node >= 18"]
+
+conflicts:
+  peaks: []                       # Peaks that cannot coexist
+                                  # e.g., [remix-frontend] if this is nextjs-frontend
+
+# How this peak integrates with the context compiler
+context:
+  boot_files: []                  # Files to read when this peak is active
+                                  # e.g., [conventions.md]
+  work_type_extensions: {}        # Extend existing profiles:
+                                  # bug-fix:
+                                  #   add_required: [knowledge/x/summary.md]
+                                  #   add_recommended: [knowledge/y/summary.md]
+  custom_work_types: []           # New work types introduced:
+                                  # - name: component-creation
+                                  #   profile: profiles/component-creation.yaml
+
+# Metadata
+tags: []                          # e.g., [frontend, react, nextjs, typescript]
+context_cost: "medium"            # small | medium | large (total peak context impact)
+created: ""                       # YYYY-MM-DD
+updated: ""                       # YYYY-MM-DD
+author: ""                        # Who created this peak
+source_url: ""                    # Git repo or URL where this peak came from
+
+notes: ""                         # Optional free-text

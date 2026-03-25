@@ -15,7 +15,8 @@ On every session start, read files in this exact order:
 4. `active/active_issue.md` -- understand current focus (skip if empty/stub)
 5. `active/change_plan.md` -- understand planned work (skip if empty/stub)
 6. `active/validation_plan.md` -- understand verification steps (skip if empty/stub)
-7. Load additional context via `docs/core/02_context_compiler.md` as needed
+7. `peaks/active_peaks.yaml` -- check for mounted peaks and load their boot files
+8. Load additional context via `docs/core/02_context_compiler.md` as needed
 
 Do NOT read all files on every boot. Use the context compiler to select relevant files.
 
@@ -93,6 +94,7 @@ All self-modifications are logged in `memory/change_log.md` with tag `[system-se
 | `/new-skill` | Create a new project-specific skill via the skill router |
 | `/retro` | Run retrospective on completed work -- feeds lessons back into system |
 | `/audit` | Run system self-audit to verify integrity |
+| `/peak [cmd]` | Manage peaks: import, mount, unmount, list, create |
 
 ---
 

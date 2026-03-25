@@ -106,9 +106,19 @@ Recommended:
   - active/validation_plan.md
 ```
 
-### Step 3: Resolve Dependencies
+### Step 3: Check Active Peaks
 
-1. Read the relevant index file(s) from `docs/registry/`
+Read `peaks/active_peaks.yaml`. If peaks are mounted:
+
+1. Read `peaks/active_profiles.yaml` for profile extensions and custom work types
+2. **Extensions**: Append the peak's `add_required` and `add_recommended` files to the matching work-type profile from Step 2
+3. **Custom work types**: If the classified work type matches a peak-provided custom type, use that profile instead of (or in addition to) the built-in profiles
+4. **Boot files**: Peak boot files listed in `active_peaks.yaml` are loaded during boot, not during compilation (they're already in context)
+5. **Conventions**: If the peak has a `conventions.md` and the work involves that peak's domain, add it to the required files
+
+### Step 4: Resolve Dependencies
+
+1. Read the relevant index file(s) from `docs/registry/` (including peak-provided components)
 2. Identify components whose tags or descriptions match the task
 3. Check `docs/registry/dependency_map.md` for required co-dependencies
 4. For each relevant component, read the `manifest.yaml` to check:
@@ -116,16 +126,17 @@ Recommended:
    - `context_cost` fits within available budget
    - `dependencies` are also loaded
 
-### Step 4: Assemble Context
+### Step 5: Assemble Context
 
 Build the context in priority order:
 
 1. **Critical** -- active state files (always loaded)
-2. **Required** -- protocol files for this work type
-3. **Summaries** -- component summaries (small context cost)
-4. **Full source** -- component source files (only when summary is insufficient)
+2. **Peak conventions** -- active peak's conventions.md (if domain-relevant)
+3. **Required** -- protocol files for this work type (including peak extensions)
+4. **Summaries** -- component summaries, including peak-provided (small context cost)
+5. **Full source** -- component source files (only when summary is insufficient)
 
-### Step 5: Update Active Context
+### Step 6: Update Active Context
 
 Write the assembled context to `active/active_context.md`:
 - Current goal

@@ -1,0 +1,19 @@
+# Peak Index
+# Central registry of all peaks available to the system.
+# The context compiler and peak manager read this to manage peaks.
+#
+# Entry format:
+#   - name: peak-name
+#     path: peaks/peak-name/
+#     version: "1.0.0"
+#     status: draft | ready | unmounted | deprecated | superseded
+#     domain: frontend | backend | fullstack | agents | devops | mobile | data | security
+#     stack: [framework1, framework2]
+#     provides:
+#       skills: [skill1, skill2]
+#       knowledge: [knowledge1]
+#       profiles: [profile1]
+#     context_cost: small | medium | large
+#     description: One-line summary
+
+peaks: []

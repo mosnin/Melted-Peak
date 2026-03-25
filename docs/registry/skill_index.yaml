@@ -67,3 +67,11 @@ skills:
     tags: [meta, self-improvement, feedback, quality, metrics]
     triggers: [issue-resolved, feature-completed, user-command-retro, three-strike-invoked]
     description: Post-completion analysis that feeds lessons back into skills, protocols, and context profiles
+
+  - name: peak-manager
+    path: skills/peak-manager/
+    status: ready
+    context_cost: medium
+    tags: [peaks, import, mount, system, meta, integration]
+    triggers: [user-command-peak, peak-import, peak-mount, peak-unmount]
+    description: Import, mount, unmount, and manage peaks -- comprehensive domain sub-systems

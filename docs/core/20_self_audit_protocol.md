@@ -98,7 +98,32 @@ Check memory/metrics/pattern_journal.md:
 
 **Fix**: Rotate oversized files, archive resolved issues, flag patterns for skill creation.
 
-### 6. Skill Quality Check
+### 6. Peak Integrity
+
+```
+Check peaks/active_peaks.yaml:
+  - Does each listed peak directory still exist?
+  - Is each peak's status still 'ready' in peak_index.yaml?
+  - Do boot_files referenced still exist?
+
+Check peaks/active_profiles.yaml:
+  - Do all extension file references point to existing files?
+  - Are custom work types still valid?
+
+Check docs/registry/peak_index.yaml:
+  - Does each peak path exist?
+  - Do 'provides' lists match actual files in the peak directory?
+  - Are there unmounted peaks that should be cleaned up?
+
+For each mounted peak:
+  - Are its registered skills still in skill_index.yaml?
+  - Are its registered knowledge packs still in knowledge_index.yaml?
+  - Do peak manifest conflicts match reality?
+```
+
+**Fix**: Remove orphaned entries, re-register missing components, update stale manifests.
+
+### 7. Skill Quality Check (including peak-provided skills)
 
 For each skill with status `ready`:
 
@@ -111,7 +136,7 @@ Check last 3 uses in memory/metrics/effectiveness.md:
 
 **Fix**: Simplify low-adherence skills, deprecate unused skills, improve low-effectiveness skills.
 
-### 7. Protocol Weight Check
+### 8. Protocol Weight Check
 
 ```
 For each docs/core/ protocol:

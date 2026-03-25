@@ -27,9 +27,12 @@ Determine what type of component this will become:
 
 | Type | Criteria | Destination |
 |------|----------|-------------|
+| **Peak** | Comprehensive domain sub-system with its own skills, knowledge, templates, and conventions (e.g., a full frontend or backend system) | `peaks/[name]/` -- use the peak manager skill (`/peak import`) |
 | **Framework** | Large, comprehensive system (architecture patterns, testing strategies, full methodologies) | `frameworks/[name]/` |
 | **Skill** | Focused workflow capability (debugging protocol, review checklist, deployment procedure) | `skills/[name]/` |
 | **Knowledge** | Reference material (API docs, domain expertise, best practices) | `knowledge/[name]/` |
+
+**Note**: If the incoming material is comprehensive enough to contain its own workflows, conventions, and reference material for an entire domain, it is a **Peak**, not a Framework. Use `/peak import` instead of the standard ingestion workflow. See `docs/peaks/peak_system.md`.
 
 ### Step 3: Normalize
 

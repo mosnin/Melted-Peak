@@ -14,7 +14,17 @@ Melted Peak is an Engineering Context Operating System -- a structured filesyste
 | `docs/core/` | System protocols (change control, regression, etc.) | When relevant |
 | `docs/registry/` | Component indexes | During context compilation |
 | `docs/templates/` | Standard file formats | When creating artifacts |
+| `peaks/` | Importable domain sub-systems (frontend, backend, agents) | Via peak manager |
 | `incoming/` | Staging for new components | During ingestion |
+
+## Peaks
+
+Peaks are comprehensive, importable sub-systems for specific domains. A peak brings its own skills, knowledge, templates, context profiles, and conventions. Think of Melted Peak as an OS and peaks as application packages.
+
+- **Mount/unmount** peaks dynamically with `/peak mount [name]`
+- Mounted peaks extend the context compiler with domain-specific profiles
+- Peak-provided skills and knowledge register into the main indexes
+- See `docs/peaks/peak_system.md` for full documentation
 
 ## Component Structure
 

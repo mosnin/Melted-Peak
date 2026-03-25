@@ -12,3 +12,7 @@ Maps relationships between Melted Peak components. Used by the context compiler 
 ### skills/project-kickoff
 - Depends on: skills/skill-router
 - Reason: Phase 4 of project kickoff uses the skill router to generate initial project-specific skills from patterns discovered during the interview
+
+### skills/peak-manager
+- Depends on: skills/skill-router
+- Reason: Peak creation workflow uses the skill router to generate domain-specific skills within the peak

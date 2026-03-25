@@ -1,0 +1,22 @@
+name: "peak-manager"
+version: "1.0.0"
+status: "ready"
+description: "Import, mount, unmount, and manage peaks -- comprehensive domain sub-systems"
+context_cost: "medium"
+
+tags: [peaks, import, mount, system, meta, integration]
+
+dependencies:
+  - skill-router  # Used during peak creation to generate peak-specific skills
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-command-peak, peak-import, peak-mount, peak-unmount]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Manages the full lifecycle of peaks: import, validate, mount, unmount, update, create."
