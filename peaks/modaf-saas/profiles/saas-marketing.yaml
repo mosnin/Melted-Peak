@@ -1,0 +1,20 @@
+# SaaS Marketing Site Profile
+# Used during Phase 13 (public website)
+
+work_type: saas-marketing
+description: "Building the SaaS marketing/public website"
+
+required:
+  - peaks/modaf-saas/conventions.md
+  - peaks/modaf-saas/knowledge/saas-website/summary.md
+
+recommended:
+  - peaks/modaf-saas/knowledge/saas-website/source/saas_home_page_system.md
+  - peaks/modaf-saas/knowledge/saas-website/source/saas_website_page_system.md
+  - peaks/modaf-saas/knowledge/saas-website/source/design_system_tokens.md
+  - peaks/modaf-saas/knowledge/saas-website/source/public_screen_archetypes.md
+  - peaks/modaf-saas/knowledge/saas-website/source/public_component_specs.md
+  - peaks/modaf-saas/knowledge/saas-website/source/public_copy_conversion_rules.md
+  - peaks/modaf-saas/knowledge/saas-website/source/component_library_spec.md
+  - peaks/modaf-saas/knowledge/saas-website/source/sitemap_diagram.md
+  - peaks/modaf-saas/knowledge/saas-website/source/nextjs_folder_structure.md

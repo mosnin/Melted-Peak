@@ -1,0 +1,21 @@
+# SaaS Phase Build Profile
+# Used during active build phases (4-14)
+
+work_type: saas-phase-build
+description: "Building a SaaS app phase (foundation, auth, features, etc.)"
+
+required:
+  - active/active_issue.md
+  - active/change_plan.md
+  - peaks/modaf-saas/conventions.md
+  - peaks/modaf-saas/knowledge/saas-internal/summary.md
+
+recommended:
+  - docs/project/pattern_snapshot.md        # MANDATORY for Phase 8+
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/09_build_rules_internal.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/21_validation_gates.md
+  # Phase-specific files loaded by the saas-phase-workflow skill
+
+notes: >
+  The saas-phase-workflow skill handles loading phase-specific files.
+  This profile provides the base context for any build phase.

@@ -1,17 +1,11 @@
 # Active Peaks
 # Lists all currently mounted peaks. Read during boot sequence.
 # Managed by the peak-manager skill -- do not edit manually.
-#
-# When a peak is mounted, its entry is added here.
-# When unmounted, its entry is removed.
-# The boot sequence reads this file to determine which peak boot_files to load.
 
-active_peaks: []
-
-# Entry format:
-#   - name: peak-name
-#     domain: frontend
-#     version: "1.0.0"
-#     boot_files:
-#       - peaks/peak-name/conventions.md
-#     mounted: YYYY-MM-DD
+active_peaks:
+  - name: modaf-saas
+    domain: fullstack
+    version: "1.0.0"
+    boot_files:
+      - peaks/modaf-saas/conventions.md
+    mounted: "2026-03-25"

@@ -16,4 +16,16 @@
 #     context_cost: small | medium | large
 #     description: One-line summary
 
-peaks: []
+peaks:
+  - name: modaf-saas
+    path: peaks/modaf-saas/
+    version: "1.0.0"
+    status: ready
+    domain: fullstack
+    stack: [nextjs, typescript, prisma, stripe, tailwind]
+    provides:
+      skills: [modaf-saas/saas-phase-workflow, modaf-saas/modaf-doctor]
+      knowledge: [modaf-saas/saas-internal, modaf-saas/saas-website]
+      profiles: [saas-build, saas-discovery, saas-architecture, saas-marketing]
+    context_cost: large
+    description: Complete SaaS application framework -- 15-phase build system from discovery to polish

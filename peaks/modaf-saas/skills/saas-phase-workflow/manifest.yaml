@@ -1,0 +1,22 @@
+name: "modaf-saas/saas-phase-workflow"
+version: "1.0.0"
+status: "ready"
+description: "Orchestrate the 15-phase Modaf SaaS build process with phase detection and validation gates"
+context_cost: "small"
+
+tags: [saas, phases, build, workflow, orchestration]
+
+dependencies:
+  - modaf-saas/saas-internal
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [saas-project-start, phase-resume, phase-advance, work-type-saas-phase-build]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Core orchestration skill for Modaf SaaS builds."

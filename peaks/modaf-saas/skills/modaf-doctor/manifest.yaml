@@ -1,0 +1,18 @@
+name: "modaf-saas/modaf-doctor"
+version: "1.0.0"
+status: "ready"
+description: "Diagnostic and repair system for Modaf framework and project docs"
+context_cost: "small"
+
+tags: [saas, diagnostics, doctor, health-check, repair]
+
+dependencies:
+  - modaf-saas/saas-internal
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-request-doctor, framework-health-check]
+
+created: "2026-03-25"
+updated: "2026-03-25"

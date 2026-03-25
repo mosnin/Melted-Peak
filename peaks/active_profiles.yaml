@@ -1,29 +1,37 @@
 # Active Peak Profiles
 # Context compiler profile extensions provided by mounted peaks.
 # Read by the context compiler AFTER built-in profiles.
-# Managed by the peak-manager skill -- do not edit manually.
 
-# Extensions add files to existing work-type profiles
-extensions: []
+extensions:
+  - peak: modaf-saas
+    extends: bug-fix
+    add_recommended:
+      - peaks/modaf-saas/knowledge/saas-internal/summary.md
 
-# Entry format:
-#   - peak: peak-name
-#     extends: bug-fix
-#     add_required:
-#       - peaks/peak-name/knowledge/something/summary.md
-#     add_recommended:
-#       - peaks/peak-name/conventions.md
+  - peak: modaf-saas
+    extends: new-feature
+    add_required:
+      - peaks/modaf-saas/conventions.md
+    add_recommended:
+      - peaks/modaf-saas/knowledge/saas-internal/summary.md
 
-# Custom work types introduced by peaks
-custom_work_types: []
+custom_work_types:
+  - peak: modaf-saas
+    work_type: saas-phase-build
+    description: "Building a SaaS app phase (foundation, auth, features, etc.)"
+    profile_path: peaks/modaf-saas/profiles/saas-build.yaml
 
-# Entry format:
-#   - peak: peak-name
-#     work_type: component-creation
-#     description: "Creating a new React component"
-#     required:
-#       - active/active_issue.md
-#       - active/change_plan.md
-#       - peaks/peak-name/conventions.md
-#     recommended:
-#       - peaks/peak-name/knowledge/react-patterns/summary.md
+  - peak: modaf-saas
+    work_type: saas-discovery
+    description: "SaaS product discovery and project document generation"
+    profile_path: peaks/modaf-saas/profiles/saas-discovery.yaml
+
+  - peak: modaf-saas
+    work_type: saas-architecture
+    description: "SaaS architecture planning -- entities, routes, modules, build order"
+    profile_path: peaks/modaf-saas/profiles/saas-architecture.yaml
+
+  - peak: modaf-saas
+    work_type: saas-marketing
+    description: "Building the SaaS marketing/public website"
+    profile_path: peaks/modaf-saas/profiles/saas-marketing.yaml

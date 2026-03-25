@@ -75,3 +75,23 @@ skills:
     tags: [peaks, import, mount, system, meta, integration]
     triggers: [user-command-peak, peak-import, peak-mount, peak-unmount]
     description: Import, mount, unmount, and manage peaks -- comprehensive domain sub-systems
+
+  # --- Peak-provided skills ---
+
+  - name: modaf-saas/saas-phase-workflow
+    path: peaks/modaf-saas/skills/saas-phase-workflow/
+    status: ready
+    context_cost: small
+    tags: [saas, phases, build, workflow, orchestration]
+    triggers: [saas-project-start, phase-resume, phase-advance, work-type-saas-phase-build]
+    description: Orchestrate the 15-phase Modaf SaaS build process with phase detection and validation
+    peak: modaf-saas
+
+  - name: modaf-saas/modaf-doctor
+    path: peaks/modaf-saas/skills/modaf-doctor/
+    status: ready
+    context_cost: small
+    tags: [saas, diagnostics, doctor, health-check]
+    triggers: [user-request-doctor, framework-health-check]
+    description: Diagnostic and repair system for Modaf framework and project docs
+    peak: modaf-saas

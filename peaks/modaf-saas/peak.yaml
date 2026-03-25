@@ -1,0 +1,91 @@
+name: "modaf-saas"
+version: "1.0.0"
+status: "ready"
+description: "Complete SaaS application framework -- phased build system from discovery to polish"
+domain: "fullstack"
+
+provides:
+  skills:
+    - modaf-saas/saas-phase-workflow
+    - modaf-saas/modaf-doctor
+  knowledge:
+    - modaf-saas/saas-internal
+    - modaf-saas/saas-website
+  templates:
+    - app-idea
+    - project-brief
+    - feature-spec
+    - user-flows
+    - edge-cases
+    - tech-stack
+    - permissions-matrix
+    - acceptance-criteria
+    - qa-checklist
+  profiles:
+    - saas-build
+    - saas-discovery
+    - saas-architecture
+    - saas-marketing
+
+stack:
+  languages: [typescript]
+  frameworks: [nextjs, react]
+  runtimes: [node]
+  databases: [postgres]
+  tools:
+    - prisma
+    - tailwind
+    - shadcn-ui
+    - stripe
+    - auth-js
+    - resend
+    - react-email
+    - vercel
+    - tanstack-query
+    - react-hook-form
+    - zod
+    - vitest
+    - playwright
+
+requires:
+  melted_peak_version: ">=1.0.0"
+  peaks: []
+  system: ["node >= 18"]
+
+conflicts:
+  peaks: []
+
+context:
+  boot_files:
+    - peaks/modaf-saas/conventions.md
+  work_type_extensions:
+    bug-fix:
+      add_recommended:
+        - peaks/modaf-saas/knowledge/saas-internal/summary.md
+    new-feature:
+      add_required:
+        - peaks/modaf-saas/conventions.md
+      add_recommended:
+        - peaks/modaf-saas/knowledge/saas-internal/summary.md
+  custom_work_types:
+    - name: saas-phase-build
+      profile: profiles/saas-build.yaml
+    - name: saas-discovery
+      profile: profiles/saas-discovery.yaml
+    - name: saas-architecture
+      profile: profiles/saas-architecture.yaml
+    - name: saas-marketing
+      profile: profiles/saas-marketing.yaml
+
+tags: [saas, fullstack, nextjs, react, typescript, prisma, stripe, framework, phased-build]
+context_cost: "large"
+created: "2026-03-25"
+updated: "2026-03-25"
+author: "mosnin"
+source_url: "https://github.com/mosnin/LoxSammy"
+
+notes: >
+  Modaf is a comprehensive SaaS framework with 15 build phases (0-14),
+  28 internal reference docs, 9 website docs, and 9 project templates.
+  It guides the full lifecycle from idea discovery through polish.
+  Default stack: Next.js + TypeScript + Tailwind + Prisma + Stripe.

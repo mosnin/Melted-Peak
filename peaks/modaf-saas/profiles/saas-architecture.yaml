@@ -1,0 +1,17 @@
+# SaaS Architecture Profile
+# Used during Phase 3 (architecture planning)
+
+work_type: saas-architecture
+description: "SaaS architecture planning -- entities, routes, modules, build order"
+
+required:
+  - peaks/modaf-saas/conventions.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/07_data_models.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/06_routes_and_permissions.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/04_feature_modules.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/09_build_rules_internal.md
+
+recommended:
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/23_escape_hatches.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/internal/21_validation_gates.md
+  - memory/architecture_decisions.md

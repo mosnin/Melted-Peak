@@ -1,0 +1,21 @@
+name: "modaf-saas/saas-internal"
+version: "1.0.0"
+status: "ready"
+description: "Internal SaaS app reference -- 28 docs covering auth, dashboard, features, data models, UI system, build rules, and more"
+context_cost: "large"
+domain: "fullstack"
+
+tags: [saas, internal, app, auth, dashboard, features, data-models, ui, build-rules, prisma, nextjs]
+
+dependencies: []
+
+source_path: "source/"
+summary_path: "summary.md"
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: >
+  Contains 28 internal docs, 15 phase index files, 2 prompt files,
+  plus manifest, quick start, glossary, version, and changelog.
+  Load summary first; load individual internal docs by phase number.

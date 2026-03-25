@@ -11,4 +11,23 @@
 #     tags: [tag1, tag2]
 #     description: One-line summary
 
-knowledge: []
+knowledge:
+  # --- Peak-provided knowledge ---
+
+  - name: modaf-saas/saas-internal
+    path: peaks/modaf-saas/knowledge/saas-internal/
+    status: ready
+    context_cost: large
+    domain: fullstack
+    tags: [saas, internal, auth, dashboard, features, data-models, ui, build-rules, prisma, nextjs]
+    description: Internal SaaS app reference -- 28 docs covering auth, dashboard, features, data models, UI, build rules
+    peak: modaf-saas
+
+  - name: modaf-saas/saas-website
+    path: peaks/modaf-saas/knowledge/saas-website/
+    status: ready
+    context_cost: medium
+    domain: frontend
+    tags: [saas, website, marketing, landing-page, conversion, design-system, nextjs]
+    description: SaaS marketing website reference -- 9 docs covering home page, page system, design tokens, components
+    peak: modaf-saas

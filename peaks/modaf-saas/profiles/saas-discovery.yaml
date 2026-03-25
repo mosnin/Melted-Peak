@@ -1,0 +1,13 @@
+# SaaS Discovery Profile
+# Used during Phases 0-2 (welcome, interview, project docs)
+
+work_type: saas-discovery
+description: "SaaS product discovery and project document generation"
+
+required:
+  - peaks/modaf-saas/conventions.md
+  - peaks/modaf-saas/knowledge/saas-internal/source/QUICK_START.md
+
+recommended:
+  - peaks/modaf-saas/templates/       # All 9 templates for structure reference
+  - peaks/modaf-saas/knowledge/saas-internal/source/prompts/00_kickoff_system.md

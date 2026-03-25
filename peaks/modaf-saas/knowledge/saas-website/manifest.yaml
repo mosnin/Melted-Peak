@@ -1,0 +1,18 @@
+name: "modaf-saas/saas-website"
+version: "1.0.0"
+status: "ready"
+description: "SaaS marketing website reference -- 9 docs covering home page, page system, design tokens, components, copy rules, and sitemap"
+context_cost: "medium"
+domain: "frontend"
+
+tags: [saas, website, marketing, landing-page, conversion, design-system, nextjs]
+
+dependencies: []
+
+source_path: "source/"
+summary_path: "summary.md"
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Used during Phase 13 (marketing site). 9 reference docs for public-facing pages."
