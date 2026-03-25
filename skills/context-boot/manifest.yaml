@@ -1,0 +1,21 @@
+name: "context-boot"
+version: "1.0.0"
+status: "ready"
+description: "Boot the Melted Peak context system at session start"
+context_cost: "small"
+
+tags: [system, boot, context, session]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [session-start, user-command-boot]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "This is the foundational skill that all sessions begin with."

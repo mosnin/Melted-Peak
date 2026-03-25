@@ -1,0 +1,21 @@
+# Skill Index
+# Central registry of all skills available to the system.
+# The context compiler reads this to find relevant skills for a task.
+#
+# Entry format:
+#   - name: skill-name
+#     path: skills/skill-name/
+#     status: draft | ready | deprecated | superseded
+#     context_cost: small | medium | large
+#     tags: [tag1, tag2]
+#     triggers: [condition1, condition2]
+#     description: One-line summary
+
+skills:
+  - name: context-boot
+    path: skills/context-boot/
+    status: ready
+    context_cost: small
+    tags: [system, boot, context]
+    triggers: [session-start]
+    description: Boot the Melted Peak context system at session start

@@ -1,0 +1,14 @@
+# Knowledge Index
+# Central registry of all knowledge packs available to the system.
+# The context compiler reads this to find relevant knowledge for a task.
+#
+# Entry format:
+#   - name: knowledge-name
+#     path: knowledge/knowledge-name/
+#     status: draft | ready | deprecated | superseded
+#     context_cost: small | medium | large
+#     domain: primary-domain
+#     tags: [tag1, tag2]
+#     description: One-line summary
+
+knowledge: []

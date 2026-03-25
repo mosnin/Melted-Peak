@@ -1,0 +1,13 @@
+# Framework Index
+# Central registry of all frameworks available to the system.
+# The context compiler reads this to find relevant frameworks for a task.
+#
+# Entry format:
+#   - name: framework-name
+#     path: frameworks/framework-name/
+#     status: draft | ready | deprecated | superseded
+#     context_cost: small | medium | large
+#     tags: [tag1, tag2]
+#     description: One-line summary
+
+frameworks: []

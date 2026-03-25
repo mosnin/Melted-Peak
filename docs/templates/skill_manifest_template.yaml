@@ -1,0 +1,25 @@
+# Skill Manifest Template
+# Copy this file to skills/[name]/manifest.yaml
+
+name: ""                    # Unique identifier (lowercase, hyphens)
+version: "1.0.0"            # Semantic versioning
+status: "draft"             # draft | ready | deprecated | superseded
+description: ""             # One-line summary
+context_cost: "small"       # small | medium | large (context window impact)
+
+tags: []                    # Searchable tags, e.g. [debugging, workflow, review]
+
+dependencies: []            # Other components required
+
+superseded_by: ""           # If status is superseded, name of replacement
+
+source_path: "source/SKILL.md"  # Path to workflow logic
+summary_path: "summary.md"      # Path to operational overview
+
+triggers: []                # Conditions that activate this skill
+                            # e.g. ["bug reported", "session start", "code review"]
+
+created: ""                 # YYYY-MM-DD
+updated: ""                 # YYYY-MM-DD
+
+notes: ""                   # Optional free-text notes

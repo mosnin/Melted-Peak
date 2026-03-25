@@ -1,0 +1,23 @@
+# Knowledge Pack Manifest Template
+# Copy this file to knowledge/[name]/manifest.yaml
+
+name: ""                    # Unique identifier (lowercase, hyphens)
+version: "1.0.0"            # Semantic versioning
+status: "draft"             # draft | ready | deprecated | superseded
+description: ""             # One-line summary
+context_cost: "medium"      # small | medium | large (context window impact)
+
+tags: []                    # Searchable tags, e.g. [database, auth, performance]
+domain: ""                  # Primary domain, e.g. "backend", "security", "devops"
+
+dependencies: []            # Other components required
+
+superseded_by: ""           # If status is superseded, name of replacement
+
+source_path: "source/"      # Path to reference material
+summary_path: "summary.md"  # Path to operational overview
+
+created: ""                 # YYYY-MM-DD
+updated: ""                 # YYYY-MM-DD
+
+notes: ""                   # Optional free-text notes
