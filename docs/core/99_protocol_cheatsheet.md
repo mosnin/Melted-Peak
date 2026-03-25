@@ -63,3 +63,22 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - MP at root: add project-specific section to bottom of CLAUDE.md
 - Rule priority: project code rules > MP process rules
 - Upgrade: back up memory/ and active/, replace docs/, restore backups
+
+## Self-Audit (20)
+- Run every 5th session or on `/audit`
+- Check: registry integrity, cross-references, dependency map, active state freshness, memory health, skill quality, protocol weight
+- Report to `memory/metrics/audit_log.md`
+- Severity: critical (fix now) > warning (fix during audit) > info (note for retro)
+
+## Retrospective (skill)
+- Run after resolving issues (especially 2+ attempt ones) or on `/retro`
+- Gather evidence → analyze effectiveness → feed back into system → log metrics → check patterns
+- Updates: regression checklist, skills, context profiles, architecture decisions
+- Safety: protocol changes require user confirmation, one improvement at a time
+
+## Self-Improvement Loops
+1. Pattern journal: log repeated workflows → skill router at 3 occurrences
+2. Context tracking: log used/unused components → tune compiler profiles
+3. Post-completion retro: extract lessons → update skills and protocols
+4. Regression growth: every bug fix → checklist entry
+5. Confidence mapping: rate assumptions → verify low-confidence first

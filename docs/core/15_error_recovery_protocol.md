@@ -56,3 +56,5 @@ After resolving a difficult issue:
 2. Update `memory/architecture_decisions.md` if a design insight was gained
 3. Update `memory/known_issues.md` with related risks discovered
 4. Write a brief "lessons learned" entry in the resolution section of `active/active_issue.md`
+5. **Run the retrospective skill** if the issue took 2+ attempts. This feeds lessons back into the system so the same class of problem is handled better next time.
+6. Log the pattern in `memory/metrics/pattern_journal.md` if the debugging approach could be reused

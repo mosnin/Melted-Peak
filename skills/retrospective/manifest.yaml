@@ -1,0 +1,21 @@
+name: "retrospective"
+version: "1.0.0"
+status: "ready"
+description: "Post-completion analysis that feeds lessons back into the system to improve skills and protocols"
+context_cost: "small"
+
+tags: [meta, self-improvement, feedback, quality, metrics]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [issue-resolved, feature-completed, user-command-retro, three-strike-invoked, multi-session-complete]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Primary self-improvement mechanism. Can suggest changes to other skills and protocols."

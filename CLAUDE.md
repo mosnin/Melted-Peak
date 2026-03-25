@@ -64,6 +64,17 @@ This is the single most important rule for preventing circular problem-solving. 
 - Nothing leaves `incoming/` without passing the readiness gate (`docs/core/11_readiness_gate.md`)
 - Follow `docs/core/10_ingestion_and_normalization_rules.md` for all new components
 
+### Self-Improvement Loops (Always Running)
+These feedback loops run passively during normal work:
+
+1. **Pattern Detection**: When you notice a repeated workflow (same file sequence, same checks), log it in `memory/metrics/pattern_journal.md`. At 3 occurrences, suggest a new skill.
+2. **Context Tracking**: After each task, note in `active/active_context.md` which loaded components were actually used vs. unused. This tunes the context compiler over time.
+3. **Post-Completion Retro**: After resolving any issue that took 2+ attempts, run the retrospective skill to extract lessons and update the system.
+4. **Regression Checklist Growth**: Every bug fix MUST add the sensitive area to `active/regression_checklist.md`. The checklist grows automatically.
+5. **Confidence Tracking**: When making assumptions, rate confidence (high/medium/low) in `active/active_context.md`. Low-confidence items get verified first.
+
+All self-modifications are logged in `memory/change_log.md` with tag `[system-self-improvement]`. Protocol changes require user confirmation.
+
 ---
 
 ## User Commands
@@ -80,6 +91,8 @@ This is the single most important rule for preventing circular problem-solving. 
 | `/issues` | Show known issues from `memory/known_issues.md` |
 | `/kickoff` | Run project kickoff interview and generate PRD |
 | `/new-skill` | Create a new project-specific skill via the skill router |
+| `/retro` | Run retrospective on completed work -- feeds lessons back into system |
+| `/audit` | Run system self-audit to verify integrity |
 
 ---
 

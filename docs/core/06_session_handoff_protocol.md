@@ -85,6 +85,15 @@ Update `memory/project_state.md` with the current snapshot:
 
 The previous `memory/session_handoff.md` content should be summarized and appended to `memory/progress_log.md` before being overwritten with the new handoff.
 
+### Step 6: Run Feedback Loops
+
+Before closing the session, check these passive improvement triggers:
+
+1. **Pattern journal**: Were any workflow patterns repeated this session? Log to `memory/metrics/pattern_journal.md`. If any pattern has 3+ occurrences, flag for skill creation.
+2. **Context usage**: In `active/active_context.md`, mark loaded components as `used` or `unused`. Log to `memory/metrics/context_usage.md`.
+3. **Retrospective trigger**: If any issue resolved this session took 2+ attempts, run the retrospective skill (or note it as the first priority for next session).
+4. **Audit trigger**: Check if this is the 5th session since the last audit. If so, schedule an audit for next session start.
+
 ---
 
 ## Quality Checklist
@@ -95,9 +104,11 @@ Before considering the handoff complete:
 - [ ] `memory/progress_log.md` is updated
 - [ ] `memory/change_log.md` reflects all code changes
 - [ ] `memory/recent_deltas.md` is current
-- [ ] `active/active_context.md` reflects end-of-session state
+- [ ] `active/active_context.md` reflects end-of-session state (with component usage marked)
 - [ ] `active/active_issue.md` reflects current issue status
 - [ ] Any discovered issues are in `memory/known_issues.md`
+- [ ] Pattern journal updated if repeated workflows were observed
+- [ ] Context usage logged to `memory/metrics/context_usage.md`
 
 ---
 

@@ -59,3 +59,11 @@ skills:
     tags: [kickoff, prd, interview, discovery, planning, onboarding]
     triggers: [new-project, user-command-kickoff, no-prd-exists]
     description: Structured interview that produces a PRD and seeds the Melted Peak memory system
+
+  - name: retrospective
+    path: skills/retrospective/
+    status: ready
+    context_cost: small
+    tags: [meta, self-improvement, feedback, quality, metrics]
+    triggers: [issue-resolved, feature-completed, user-command-retro, three-strike-invoked]
+    description: Post-completion analysis that feeds lessons back into skills, protocols, and context profiles

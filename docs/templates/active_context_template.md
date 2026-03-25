@@ -18,15 +18,25 @@
 ## Loaded Components
 <!-- Which frameworks, skills, and knowledge packs are loaded and why? -->
 
-| Component | Reason |
-|-----------|--------|
-| | |
+| Component | Reason | Used? |
+|-----------|--------|-------|
+| | | |
+
+## Confidence Map
+<!-- Rate your confidence in key assumptions. Low confidence = verify before acting. -->
+
+| Assumption | Confidence | Verify How |
+|------------|-----------|------------|
+| | high/medium/low | |
 
 ## Current State
 <!-- What has been done so far? Where are we in the process? -->
 
 ## Next Action
 <!-- What is the immediate next step? Be specific. -->
+
+## Open Questions
+<!-- Things we're not sure about. Resolve before they block progress. -->
 
 ## Blockers
 <!-- Anything preventing progress? Leave empty if none. -->
