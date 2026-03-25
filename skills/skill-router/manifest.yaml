@@ -1,0 +1,21 @@
+name: "skill-router"
+version: "1.0.0"
+status: "ready"
+description: "Meta-skill that detects workflow patterns and guides creation of new project-specific skills"
+context_cost: "medium"
+
+tags: [meta, skill-creation, workflow, system, patterns]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-command-new-skill, repeated-workflow-detected, retrospective, pattern-identified]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "This is the skill that creates other skills. Makes Melted Peak self-evolving."

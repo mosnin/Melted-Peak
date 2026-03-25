@@ -43,3 +43,19 @@ skills:
     tags: [dependencies, maintenance, security, workflow]
     triggers: [dependency-update, security-vulnerability, work-type-maintenance]
     description: Safe dependency update workflow with changelog review, risk assessment, and rollback
+
+  - name: skill-router
+    path: skills/skill-router/
+    status: ready
+    context_cost: medium
+    tags: [meta, skill-creation, workflow, system, patterns]
+    triggers: [user-command-new-skill, repeated-workflow-detected, retrospective, pattern-identified]
+    description: Meta-skill that detects workflow patterns and guides creation of new project-specific skills
+
+  - name: project-kickoff
+    path: skills/project-kickoff/
+    status: ready
+    context_cost: medium
+    tags: [kickoff, prd, interview, discovery, planning, onboarding]
+    triggers: [new-project, user-command-kickoff, no-prd-exists]
+    description: Structured interview that produces a PRD and seeds the Melted Peak memory system

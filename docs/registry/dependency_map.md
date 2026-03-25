@@ -9,14 +9,6 @@ Maps relationships between Melted Peak components. Used by the context compiler 
 
 ## Current Dependencies
 
-No cross-component dependencies registered yet.
-
-<!-- Example format:
-## frameworks/example-framework
-- Depends on: knowledge/example-knowledge
-- Reason: Uses domain patterns defined in the knowledge pack
-
-## skills/example-skill
-- Depends on: frameworks/example-framework
-- Reason: Implements a workflow defined by the framework
--->
+### skills/project-kickoff
+- Depends on: skills/skill-router
+- Reason: Phase 4 of project kickoff uses the skill router to generate initial project-specific skills from patterns discovered during the interview

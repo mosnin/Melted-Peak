@@ -1,0 +1,22 @@
+name: "project-kickoff"
+version: "1.0.0"
+status: "ready"
+description: "Structured interview that produces a PRD and seeds the Melted Peak memory system"
+context_cost: "medium"
+
+tags: [kickoff, prd, interview, discovery, planning, onboarding]
+
+dependencies:
+  - skill-router  # Used in Phase 4 to generate initial project-specific skills
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-project, user-command-kickoff, no-prd-exists]
+
+created: "2026-03-25"
+updated: "2026-03-25"
+
+notes: "Run once at project start. Produces docs/prd.md and seeds all memory files."

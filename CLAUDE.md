@@ -78,6 +78,8 @@ This is the single most important rule for preventing circular problem-solving. 
 | `/validate` | Run validation plan and regression checklist |
 | `/ingest` | Begin ingestion workflow for a new component |
 | `/issues` | Show known issues from `memory/known_issues.md` |
+| `/kickoff` | Run project kickoff interview and generate PRD |
+| `/new-skill` | Create a new project-specific skill via the skill router |
 
 ---
 
