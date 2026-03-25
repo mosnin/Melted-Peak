@@ -16,3 +16,11 @@ Maps relationships between Melted Peak components. Used by the context compiler 
 ### skills/peak-manager
 - Depends on: skills/skill-router
 - Reason: Peak creation workflow uses the skill router to generate domain-specific skills within the peak
+
+### peaks/modaf-saas/skills/saas-phase-workflow
+- Depends on: peaks/modaf-saas/knowledge/saas-internal
+- Reason: Phase workflow loads internal knowledge docs by phase number to guide each build step
+
+### peaks/modaf-saas/skills/modaf-doctor
+- Depends on: peaks/modaf-saas/knowledge/saas-internal
+- Reason: Doctor mode reads internal/25_doctor_mode.md from the saas-internal knowledge pack
