@@ -1,0 +1,17 @@
+name: "git-workflow"
+version: "1.0.0"
+status: "ready"
+description: "Structured git workflow with branch naming, commit discipline, and PR practices"
+context_cost: "small"
+
+tags: [git, workflow, commits, branches, pr, version-control]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [pre-commit, branch-creation, pr-creation, change-plan-execution]
+
+created: "2026-03-26"
+updated: "2026-03-26"

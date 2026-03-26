@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/|CLAUDE\\.md|README\\.md|QUICKSTART\\.md|\\.gitkeep|\\.gitignore)' && [ ! -s active/change_plan.md ] || grep -q 'No active change plan' active/change_plan.md 2>/dev/null; then echo '⚡ MELTED PEAK WARNING: You are modifying a code file without a change plan. Write a plan to active/change_plan.md first (exempt: typos, comments, formatting).'; fi"
+            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/|CLAUDE\\.md|README\\.md|QUICKSTART\\.md|\\.gitkeep|\\.gitignore|peaks/)' && [ ! -s active/change_plan.md ] || grep -q 'No active change plan' active/change_plan.md 2>/dev/null; then echo '⚡ MELTED PEAK WARNING: You are modifying a code file without a change plan. Write a plan to active/change_plan.md first (exempt: typos, comments, formatting).'; fi"
           }
         ]
       }
@@ -17,7 +17,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/)'; then echo '⚡ MELTED PEAK: File modified outside system. Update active/active_context.md and append to memory/recent_deltas.md.'; fi"
+            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/|peaks/)'; then echo '⚡ MELTED PEAK: File modified outside system. Update active/active_context.md and append to memory/recent_deltas.md.'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f active/active_issue.md ] && grep -c '### Attempt' active/active_issue.md 2>/dev/null | grep -qE '^[3-9]'; then echo '⚡ MELTED PEAK: THREE-STRIKE WARNING -- 3+ attempts logged in active_issue.md. Consider stopping to analyze root cause per docs/core/15_error_recovery_protocol.md'; fi"
           }
         ]
       }
@@ -29,6 +38,15 @@
           {
             "type": "command",
             "command": "if grep -q 'No previous session\\|awaiting first task\\|Awaiting task' memory/session_handoff.md 2>/dev/null; then echo '⚡ MELTED PEAK: Session ending without handoff. Run the handoff protocol: update memory/session_handoff.md, memory/progress_log.md, and active/active_context.md.'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if git -C . status --porcelain 2>/dev/null | grep -q '^'; then echo '⚡ MELTED PEAK: Uncommitted changes detected. Consider committing before ending the session.'; fi"
           }
         ]
       }

@@ -38,6 +38,19 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 3. Check registry for relevant components (status=ready, context_cost fits)
 4. Update `active/active_context.md` with loaded context
 
+## Scope Management (08)
+- Before any work: "Is this in scope?" → check change plan
+- Scope creep signals: plan modified 2+ times, touching unplanned files, "while I'm here" thoughts
+- Legitimate expansion: STOP, update plan, inform user, get confirmation
+- Self-inflicted creep: log observations in known_issues.md, continue original scope
+
+## Knowledge Extraction (12)
+- Layer 1 (5 min): structure, stack, entry points, config
+- Layer 2 (10 min): architecture, data flow, abstractions, dependencies
+- Layer 3 (10 min): conventions (naming, errors, state, imports, tests)
+- Layer 4 (ongoing): sensitive areas → regression checklist
+- Capture reusable patterns as knowledge packs
+
 ## Ingestion (10) + Readiness Gate (11)
 1. Raw material → `incoming/`
 2. Normalize: source + manifest.yaml + summary.md

@@ -95,3 +95,37 @@ skills:
     triggers: [user-request-doctor, framework-health-check]
     description: Diagnostic and repair system for Modaf framework and project docs
     peak: modaf-saas
+
+  # --- Batch 2 skills ---
+
+  - name: git-workflow
+    path: skills/git-workflow/
+    status: ready
+    context_cost: small
+    tags: [git, workflow, commits, branches, pr, version-control]
+    triggers: [pre-commit, branch-creation, pr-creation, change-plan-execution]
+    description: Structured git workflow with branch naming, commit discipline, and PR practices
+
+  - name: refactoring
+    path: skills/refactoring/
+    status: ready
+    context_cost: small
+    tags: [refactoring, code-quality, restructuring, workflow, incremental]
+    triggers: [work-type-refactor, code-review-structural-issue, tech-debt-cleanup]
+    description: Safe incremental refactoring with atomic transformations and verification between each step
+
+  - name: testing-strategy
+    path: skills/testing-strategy/
+    status: ready
+    context_cost: small
+    tags: [testing, quality, coverage, unit-tests, integration, e2e, workflow]
+    triggers: [writing-tests, validation-plan, coverage-evaluation, new-feature-testing]
+    description: Test planning and execution guide -- what to test, which type, how to structure, coverage
+
+  - name: performance-analysis
+    path: skills/performance-analysis/
+    status: ready
+    context_cost: small
+    tags: [performance, profiling, optimization, bottleneck, measurement, workflow]
+    triggers: [performance-issue, pre-launch-audit, hot-path-change, performance-requirements]
+    description: Systematic performance investigation -- profiling, bottleneck identification, measurement

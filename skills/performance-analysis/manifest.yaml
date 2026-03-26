@@ -1,0 +1,17 @@
+name: "performance-analysis"
+version: "1.0.0"
+status: "ready"
+description: "Systematic performance investigation -- profiling, bottleneck identification, measurement, regression prevention"
+context_cost: "small"
+
+tags: [performance, profiling, optimization, bottleneck, measurement, workflow]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [performance-issue, pre-launch-audit, hot-path-change, performance-requirements]
+
+created: "2026-03-26"
+updated: "2026-03-26"

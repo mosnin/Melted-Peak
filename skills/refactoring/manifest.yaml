@@ -1,0 +1,17 @@
+name: "refactoring"
+version: "1.0.0"
+status: "ready"
+description: "Safe incremental refactoring workflow with atomic transformations and verification between each step"
+context_cost: "small"
+
+tags: [refactoring, code-quality, restructuring, workflow, incremental]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [work-type-refactor, code-review-structural-issue, tech-debt-cleanup]
+
+created: "2026-03-26"
+updated: "2026-03-26"

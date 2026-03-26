@@ -1,0 +1,17 @@
+name: "testing-strategy"
+version: "1.0.0"
+status: "ready"
+description: "Test planning and execution guide -- what to test, which type, how to structure, coverage evaluation"
+context_cost: "small"
+
+tags: [testing, quality, coverage, unit-tests, integration, e2e, workflow]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [writing-tests, validation-plan, coverage-evaluation, new-feature-testing]
+
+created: "2026-03-26"
+updated: "2026-03-26"
