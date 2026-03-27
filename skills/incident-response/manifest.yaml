@@ -1,0 +1,21 @@
+name: "incident-response"
+version: "1.0.0"
+status: "ready"
+description: "Production incident response covering detection, triage, mitigation, communication, and post-incident review"
+context_cost: "small"
+
+tags: [incident, production, triage, mitigation, rollback, postmortem, runbook, on-call]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [production-incident, alert-firing, outage, service-degradation, post-incident-review, runbook-creation]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Operational skill for production incidents. Integrates with deployment-workflow for rollback, retrospective for post-incident learning, and debugging for root cause analysis."

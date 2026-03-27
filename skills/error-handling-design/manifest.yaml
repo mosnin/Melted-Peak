@@ -1,17 +1,21 @@
 name: "error-handling-design"
 version: "1.0.0"
 status: "ready"
-description: "Proactive error handling design -- classification, retry patterns, graceful degradation, logging, user feedback"
+description: "Comprehensive error handling design covering classification, response formats, retry patterns, graceful degradation, logging, user feedback, UI error boundaries, and testing"
 context_cost: "small"
 
-tags: [errors, error-handling, resilience, retry, logging, graceful-degradation]
+tags: [error-handling, resilience, retry, circuit-breaker, logging, degradation, error-boundaries, reliability]
 
 dependencies: []
+
+superseded_by: ""
 
 source_path: "source/SKILL.md"
 summary_path: "summary.md"
 
-triggers: [error-design, error-handling-review, resilience-planning]
+triggers: [new-service-design, api-design, error-review, resilience-review, incident-postmortem, change-plan-with-error-paths]
 
-created: "2026-03-26"
-updated: "2026-03-26"
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers all application layers: database, API, auth, file system, network. Integrates with regression checklist and known issues."

@@ -85,6 +85,30 @@ Recommended:
   - memory/progress_log.md (check if this was investigated before)
 ```
 
+#### Documentation Profile
+```
+Required:
+  - skills/documentation-generation/summary.md
+
+Recommended:
+  - memory/architecture_decisions.md
+  - memory/feature_registry.md
+  - memory/change_log.md
+  - docs/prd.md (if exists)
+```
+
+#### Maintenance Profile
+```
+Required:
+  - active/regression_checklist.md
+  - skills/dependency-update/summary.md
+
+Recommended:
+  - skills/technical-debt-assessment/summary.md
+  - memory/dependency_map.md
+  - memory/known_issues.md
+```
+
 #### Ingestion Profile
 ```
 Required:

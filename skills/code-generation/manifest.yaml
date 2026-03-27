@@ -1,0 +1,17 @@
+name: "code-generation"
+version: "1.0.0"
+status: "ready"
+description: "Structured code generation and scaffolding workflow with pattern matching, convention enforcement, and post-generation verification"
+context_cost: "small"
+
+tags: [code-generation, scaffolding, patterns, conventions, templates]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-component, new-endpoint, new-model, new-test, new-utility, scaffold-request]
+
+created: "2026-03-27"
+updated: "2026-03-27"

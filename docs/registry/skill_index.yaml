@@ -187,3 +187,29 @@ skills:
     tags: [technical-debt, code-quality, assessment, prioritization, maintenance]
     triggers: [tech-debt-review, code-quality-assessment, maintenance-planning]
     description: Debt identification, classification, cost-benefit analysis, prioritization, and paydown strategies
+
+  # --- Batch 4 skills ---
+
+  - name: incident-response
+    path: skills/incident-response/
+    status: ready
+    context_cost: small
+    tags: [incident, production, response, triage, rollback, postmortem]
+    triggers: [production-incident, outage, error-spike, user-reported-issue]
+    description: Production incident response -- severity classification, triage, mitigation, post-incident review
+
+  - name: codebase-onboarding
+    path: skills/codebase-onboarding/
+    status: ready
+    context_cost: small
+    tags: [onboarding, codebase, learning, exploration, architecture, conventions]
+    triggers: [work-type-onboarding, new-codebase, first-session, project-join]
+    description: Structured codebase onboarding -- architecture mapping, convention discovery, mental model creation
+
+  - name: code-generation
+    path: skills/code-generation/
+    status: ready
+    context_cost: small
+    tags: [code-generation, scaffolding, patterns, conventions, templates]
+    triggers: [new-component, new-endpoint, new-model, scaffolding, feature-build]
+    description: Structured code generation -- pattern matching, convention enforcement, post-generation verification

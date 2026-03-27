@@ -39,11 +39,23 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 4. Check registry for relevant components (status=ready, context_cost fits)
 5. Update `active/active_context.md` with loaded context
 
+## Parallel Work (09)
+- Parallelize only independent tasks (no shared files)
+- Each agent owns its files; shared resources (registries) updated by parent after merge
+- Skill creation pattern: agents write 3 files each, parent updates registry
+- Audit pattern: agents report findings only, parent applies fixes
+
 ## Scope Management (08)
 - Before any work: "Is this in scope?" → check change plan
 - Scope creep signals: plan modified 2+ times, touching unplanned files, "while I'm here" thoughts
 - Legitimate expansion: STOP, update plan, inform user, get confirmation
 - Self-inflicted creep: log observations in known_issues.md, continue original scope
+
+## Confidence Calibration (16)
+- Rate assumptions: high (verified) | medium (inferred) | low (guessed) | unknown
+- Verify low/unknown items BEFORE acting on them
+- Record in active_context.md Confidence Map
+- After task: compare confidence ratings with outcomes → calibrate
 
 ## Knowledge Extraction (12)
 - Layer 1 (5 min): structure, stack, entry points, config

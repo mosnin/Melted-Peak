@@ -1,0 +1,21 @@
+name: "codebase-onboarding"
+version: "1.0.0"
+status: "ready"
+description: "Structured codebase onboarding workflow that produces an architecture map, convention guide, regression checklist entries, and a mental model for future sessions"
+context_cost: "small"
+
+tags: [onboarding, architecture, conventions, exploration, knowledge-extraction]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-codebase, major-rewrite, thin-context, user-request-onboard]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Extends the knowledge extraction protocol (docs/core/12) with convention discovery, guided exploration, and sensitive area identification. Feeds regression_checklist and architecture_decisions."

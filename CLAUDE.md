@@ -112,6 +112,26 @@ All self-modifications are logged in `memory/change_log.md` with tag `[system-se
 
 ---
 
+## Gray Area Decisions
+
+When the rules don't clearly apply, use these guidelines:
+
+**"Is this change trivial enough to skip the change plan?"**
+- Trivial (skip plan): fixing a typo, adding a comment, formatting, renaming a local variable
+- NOT trivial (need plan): renaming something used in 3+ files, changing a function signature, modifying config
+- Rule of thumb: if you need to check what depends on the change, it's not trivial
+
+**"Is my new approach fundamentally different from the failed one?"**
+- Same approach with different values = NOT different (e.g., "retry with timeout 5s" vs "retry with timeout 10s")
+- Different mechanism = different (e.g., "retry" vs "cache the result" vs "restructure the data flow")
+- If you can't explain WHY this one will work when the last didn't, it's not different enough
+
+**"Should I escalate to the user or continue?"**
+- See `docs/prompts/escalation_decision.md` for the full decision tree
+- Default: escalate. The cost of pausing is low; the cost of a wrong autonomous decision is high.
+
+---
+
 ## Key References
 
 - System overview: `docs/core/00_system_overview.md`
