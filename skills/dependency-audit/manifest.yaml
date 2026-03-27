@@ -1,0 +1,21 @@
+name: "dependency-audit"
+version: "1.0.0"
+status: "ready"
+description: "Full dependency audit covering inventory, vulnerability scanning, freshness assessment, license compliance, bundle impact, unused detection, upgrade planning, and automation strategy"
+context_cost: "small"
+
+tags: [dependencies, audit, vulnerabilities, licenses, bundle-size, maintenance, security, compliance]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-request-dependency-audit, pre-release, new-project-onboarding, quarterly-maintenance, vulnerability-reported, dependency-count-high]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Complements dependency-update (which handles executing individual updates) by providing the analysis layer that determines what to update and why. Integrates findings into dependency_map, known_issues, and change_plan."

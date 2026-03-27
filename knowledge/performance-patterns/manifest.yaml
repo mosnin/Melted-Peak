@@ -1,0 +1,18 @@
+name: "performance-patterns"
+version: "1.0.0"
+status: "ready"
+description: "Web performance patterns -- Core Web Vitals, bottleneck fixes, caching strategies, performance budgets"
+context_cost: "small"
+domain: "general"
+
+tags: [performance, web-vitals, caching, optimization, budgets, measurement]
+
+dependencies: []
+
+source_path: "source/"
+summary_path: "summary.md"
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Companion reference for the performance-analysis skill."

@@ -257,3 +257,11 @@ skills:
     tags: [estimation, complexity, planning, scope, calibration]
     triggers: [task-planning, scope-assessment, change-plan-creation, complexity-evaluation]
     description: Task estimation and complexity assessment -- breakdown, confidence levels, calibration
+
+  - name: dependency-audit
+    path: skills/dependency-audit/
+    status: ready
+    context_cost: small
+    tags: [dependencies, audit, vulnerabilities, licenses, bundle-size, maintenance]
+    triggers: [dependency-review, security-scan, maintenance-audit, pre-launch]
+    description: Dependency audit -- vulnerabilities, freshness, licenses, bundle impact, upgrade roadmap

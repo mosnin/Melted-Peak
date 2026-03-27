@@ -41,3 +41,11 @@ knowledge:
     domain: general
     tags: [debugging, errors, patterns, techniques, diagnosis, troubleshooting]
     description: Common error patterns by category and 7 systematic debugging techniques
+
+  - name: performance-patterns
+    path: knowledge/performance-patterns/
+    status: ready
+    context_cost: small
+    domain: general
+    tags: [performance, web-vitals, caching, optimization, budgets, measurement]
+    description: Web performance patterns -- Core Web Vitals, bottleneck fixes, caching, budgets
