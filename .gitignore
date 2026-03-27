@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Incoming staging area git repos (cloned repos have their own .git)
+incoming/*/.git/
+
+# Node modules if any project uses them
+node_modules/
+
+# Environment files (should never be committed)
+.env
+.env.local
+.env.*.local

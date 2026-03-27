@@ -1,0 +1,21 @@
+name: "data-modeling"
+version: "1.0.0"
+status: "ready"
+description: "Comprehensive data model design guide covering entity identification, relationship mapping, field design, normalization, indexing, soft deletes, audit trails, multi-tenancy, and state machines"
+context_cost: "small"
+
+tags: [data-model, entities, relationships, normalization, indexes, schema, multi-tenancy, state-machine, audit]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-data-model, new-entity, schema-design, model-review, user-request-data-modeling]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers the full data modeling lifecycle from requirements analysis through entity design, relationship mapping, indexing, and schema documentation. Complements the database-migrations skill."

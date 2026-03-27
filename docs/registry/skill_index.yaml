@@ -213,3 +213,29 @@ skills:
     tags: [code-generation, scaffolding, patterns, conventions, templates]
     triggers: [new-component, new-endpoint, new-model, scaffolding, feature-build]
     description: Structured code generation -- pattern matching, convention enforcement, post-generation verification
+
+  # --- Batch 5 skills ---
+
+  - name: state-management
+    path: skills/state-management/
+    status: ready
+    context_cost: small
+    tags: [state, frontend, server-state, client-state, url-state, form-state, caching]
+    triggers: [state-decision, frontend-architecture, data-flow-design]
+    description: State management decision framework -- server/client/URL/form state, caching, optimistic updates
+
+  - name: accessibility-review
+    path: skills/accessibility-review/
+    status: ready
+    context_cost: small
+    tags: [accessibility, a11y, wcag, keyboard, screen-reader, contrast, aria]
+    triggers: [a11y-review, pre-launch-audit, ui-component-creation, wcag-compliance]
+    description: WCAG 2.1 AA review -- keyboard nav, screen reader, contrast, ARIA, form accessibility
+
+  - name: data-modeling
+    path: skills/data-modeling/
+    status: ready
+    context_cost: small
+    tags: [database, data-model, entities, relationships, schema, indexes, multi-tenancy]
+    triggers: [schema-design, entity-creation, data-architecture, new-feature-data]
+    description: Data model design -- entity identification, relationships, indexes, multi-tenancy, state machines

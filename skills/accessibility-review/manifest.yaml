@@ -1,0 +1,12 @@
+name: accessibility-review
+description: WCAG 2.1 AA accessibility review workflow covering semantic HTML, keyboard navigation, screen reader testing, color contrast, form accessibility, and interactive element correctness.
+status: ready
+context_cost: small
+version: 1.0.0
+entry_point: source/SKILL.md
+tags:
+  - accessibility
+  - a11y
+  - wcag
+  - review
+  - testing
