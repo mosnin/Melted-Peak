@@ -1,10 +1,10 @@
 name: "state-management"
 version: "1.0.0"
 status: "ready"
-description: "State management decision framework covering classification, solution selection, server/client/URL/form/derived state patterns, and common pitfalls"
+description: "State management decision framework covering classification, solution selection, server/client/URL/form/derived state patterns, common pitfalls, and debugging approaches"
 context_cost: "small"
 
-tags: [state-management, react, tanstack-query, zustand, url-state, form-state, server-state, client-state, signals, caching]
+tags: [state-management, react, tanstack-query, zustand, url-state, form-state, cache-invalidation, optimistic-updates]
 
 dependencies: []
 
@@ -13,9 +13,9 @@ superseded_by: ""
 source_path: "source/SKILL.md"
 summary_path: "summary.md"
 
-triggers: [new-feature-design, state-architecture, data-fetching-setup, form-design, component-refactor-with-state, debugging-stale-state]
+triggers: [new-feature-design, state-architecture-review, performance-investigation-state, refactoring-state, choosing-state-library]
 
 created: "2026-03-27"
 updated: "2026-03-27"
 
-notes: "Covers the full state classification spectrum. Focuses on decision-making rather than API specifics. Integrates with regression checklist for state-related bugs."
+notes: "Covers the full state spectrum: server, client, URL, form, and derived. Focused on decision-making rather than API reference."
