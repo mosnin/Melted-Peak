@@ -47,6 +47,7 @@ Recommended:
   - Relevant framework summary (from registry)
   - memory/recent_deltas.md (for recent changes that may have caused the bug)
   - memory/known_issues.md (check if this is already known)
+  - knowledge/debugging-patterns/summary.md (error patterns and techniques)
 ```
 
 #### New-Feature Profile

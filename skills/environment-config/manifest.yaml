@@ -1,0 +1,21 @@
+name: "environment-config"
+version: "1.0.0"
+status: "ready"
+description: "Environment and configuration management covering env var strategy, secret management, config layers, validation, environment parity, .env files, feature flags, and anti-patterns"
+context_cost: "small"
+
+tags: [environment, configuration, secrets, env-vars, feature-flags, config-validation, t3-env, dotenv]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-project-setup, config-refactor, secret-rotation, environment-setup, feature-flag-design, change-plan-with-config-changes]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers all configuration layers from defaults through runtime overrides. Integrates with change_plan and regression_checklist for config-sensitive areas."

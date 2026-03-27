@@ -239,3 +239,21 @@ skills:
     tags: [database, data-model, entities, relationships, schema, indexes, multi-tenancy]
     triggers: [schema-design, entity-creation, data-architecture, new-feature-data]
     description: Data model design -- entity identification, relationships, indexes, multi-tenancy, state machines
+
+  # --- Batch 6 skills ---
+
+  - name: environment-config
+    path: skills/environment-config/
+    status: ready
+    context_cost: small
+    tags: [environment, config, secrets, env-vars, feature-flags, security]
+    triggers: [config-change, env-setup, secret-management, feature-flag-decision]
+    description: Environment and configuration management -- env vars, secrets, validation, feature flags
+
+  - name: estimation
+    path: skills/estimation/
+    status: ready
+    context_cost: small
+    tags: [estimation, complexity, planning, scope, calibration]
+    triggers: [task-planning, scope-assessment, change-plan-creation, complexity-evaluation]
+    description: Task estimation and complexity assessment -- breakdown, confidence levels, calibration

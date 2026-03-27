@@ -31,3 +31,13 @@ knowledge:
     tags: [saas, website, marketing, landing-page, conversion, design-system, nextjs]
     description: SaaS marketing website reference -- 9 docs covering home page, page system, design tokens, components
     peak: modaf-saas
+
+  # --- General knowledge packs ---
+
+  - name: debugging-patterns
+    path: knowledge/debugging-patterns/
+    status: ready
+    context_cost: small
+    domain: general
+    tags: [debugging, errors, patterns, techniques, diagnosis, troubleshooting]
+    description: Common error patterns by category and 7 systematic debugging techniques

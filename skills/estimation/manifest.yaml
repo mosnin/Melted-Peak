@@ -1,0 +1,21 @@
+name: "estimation"
+version: "1.0.0"
+status: "ready"
+description: "Task estimation and complexity assessment with calibrated scope, confidence levels, and subtask decomposition"
+context_cost: "small"
+
+tags: [estimation, complexity, scope, planning, calibration]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [pre-change-plan, scope-assessment, user-asks-estimate, task-sizing, multi-file-change]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Integrates with change_plan (scope estimate section) and retrospective (actual vs. estimated calibration)."
