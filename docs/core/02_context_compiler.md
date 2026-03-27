@@ -29,6 +29,7 @@ Determine the type of work from the user's request or the active issue:
 | `deployment` | Shipping code to staging or production |
 | `security` | Security audit, vulnerability assessment |
 | `onboarding` | Learning a new codebase or onboarding to a project |
+| `session-resume` | Resuming work from a previous session (auto-detected at boot) |
 
 ### Step 2: Select Context Profile
 
