@@ -1,0 +1,21 @@
+name: "technical-debt-assessment"
+version: "1.0.0"
+status: "ready"
+description: "Systematic identification, classification, prioritization, and management of technical debt with cost-benefit analysis and paydown strategies"
+context_cost: "small"
+
+tags: [tech-debt, code-quality, prioritization, risk-assessment, sustainability, metrics]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [debt-audit, velocity-degradation, codebase-onboarding, retrospective-debt-finding, pre-major-feature]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers the full debt lifecycle from identification through paydown. Integrates with known_issues, pattern_journal, and retrospective skill."

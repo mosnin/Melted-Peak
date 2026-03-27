@@ -1,0 +1,21 @@
+name: "security-audit"
+version: "1.0.0"
+status: "ready"
+description: "Comprehensive security audit covering dependencies, OWASP Top 10, secrets, auth, authorization, input validation, API security, data protection, and infrastructure hardening"
+context_cost: "small"
+
+tags: [security, audit, vulnerability, owasp, secrets, authentication, authorization, api-security, data-protection]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-request-security-audit, pre-release, vulnerability-reported, new-auth-code, new-api-endpoint, dependency-added]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Supports three depth levels: targeted, standard, deep. Integrates findings into regression checklist and known issues."

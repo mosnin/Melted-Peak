@@ -83,6 +83,7 @@ All self-modifications are logged in `memory/change_log.md` with tag `[system-se
 | Command | Action |
 |---------|--------|
 | `/boot` | Read the full boot sequence and report current state |
+| `/quick-boot` | Minimal boot: read only active_context.md and session_handoff.md |
 | `/status` | Summarize active context, issue, and recent progress |
 | `/handoff` | Execute session handoff protocol |
 | `/compile` | Run context compiler for the current task |

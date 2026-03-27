@@ -1,0 +1,21 @@
+name: "database-migrations"
+version: "1.0.0"
+status: "ready"
+description: "Structured workflow for planning, authoring, testing, and executing database schema migrations safely with rollback procedures and data integrity validation"
+context_cost: "small"
+
+tags: [database, migrations, schema, safety, rollback, data-integrity]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [schema-change, migration-authoring, change-plan-with-database, database-review]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers the full migration lifecycle: planning, authoring, safety checks, execution, rollback, and validation. Integrates with change plans and regression checklists."

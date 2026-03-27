@@ -33,10 +33,11 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Circular pattern detected = STOP, re-read original problem, consider if real issue is elsewhere
 
 ## Context Compiler (02)
-1. Classify work type: bug-fix | new-feature | refactor | investigation | ingestion | maintenance
+1. Classify work type: bug-fix | new-feature | refactor | investigation | ingestion | maintenance | deployment | security | onboarding
 2. Load profile: active state + relevant protocols + component summaries
-3. Check registry for relevant components (status=ready, context_cost fits)
-4. Update `active/active_context.md` with loaded context
+3. Check active peaks for profile extensions and custom work types
+4. Check registry for relevant components (status=ready, context_cost fits)
+5. Update `active/active_context.md` with loaded context
 
 ## Scope Management (08)
 - Before any work: "Is this in scope?" → check change plan

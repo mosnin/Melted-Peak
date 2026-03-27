@@ -1,0 +1,21 @@
+name: "documentation-generation"
+version: "1.0.0"
+status: "ready"
+description: "Structured workflows for generating and maintaining READMEs, API docs, ADRs, changelogs, code comments, user guides, and contributing guidelines"
+context_cost: "small"
+
+tags: [documentation, readme, api-docs, adr, changelog, guides, contributing, maintenance]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [user-request-docs, feature-shipped, architecture-decision, release-prep, onboarding]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers the full documentation lifecycle from generation through maintenance and staleness detection. Integrates with change_log, architecture_decisions, and feature_registry."

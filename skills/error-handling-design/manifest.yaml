@@ -1,0 +1,17 @@
+name: "error-handling-design"
+version: "1.0.0"
+status: "ready"
+description: "Proactive error handling design -- classification, retry patterns, graceful degradation, logging, user feedback"
+context_cost: "small"
+
+tags: [errors, error-handling, resilience, retry, logging, graceful-degradation]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [error-design, error-handling-review, resilience-planning]
+
+created: "2026-03-26"
+updated: "2026-03-26"

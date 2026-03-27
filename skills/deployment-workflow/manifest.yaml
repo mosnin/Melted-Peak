@@ -1,0 +1,17 @@
+name: "deployment-workflow"
+version: "1.0.0"
+status: "ready"
+description: "Structured deployment workflow with pre-deploy validation, execution strategies, post-deploy verification, and rollback procedures"
+context_cost: "small"
+
+tags: [deployment, ci-cd, rollback, blue-green, canary, smoke-tests, health-checks, staging, production]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [pre-deployment, deployment-execution, post-deployment, rollback, environment-verification, change-plan-execution]
+
+created: "2026-03-27"
+updated: "2026-03-27"

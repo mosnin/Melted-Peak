@@ -1,0 +1,21 @@
+name: "api-design"
+version: "1.0.0"
+status: "ready"
+description: "Comprehensive API design guide covering REST conventions, error handling, versioning, security, and contract testing"
+context_cost: "small"
+
+tags: [api, rest, http, design, contracts, versioning, authentication, documentation]
+
+dependencies: []
+
+superseded_by: ""
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [new-api, new-endpoint, api-change, api-review, user-request-api-design]
+
+created: "2026-03-27"
+updated: "2026-03-27"
+
+notes: "Covers the full API lifecycle from contract design through testing and documentation."

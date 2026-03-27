@@ -26,6 +26,9 @@ Determine the type of work from the user's request or the active issue:
 | `documentation` | Writing or updating docs |
 | `ingestion` | Adding a new framework, skill, or knowledge pack |
 | `maintenance` | Dependency updates, cleanup, housekeeping |
+| `deployment` | Shipping code to staging or production |
+| `security` | Security audit, vulnerability assessment |
+| `onboarding` | Learning a new codebase or onboarding to a project |
 
 ### Step 2: Select Context Profile
 
@@ -91,6 +94,42 @@ Required:
 
 Recommended:
   - docs/registry/ indexes (check for conflicts)
+```
+
+#### Deployment Profile
+```
+Required:
+  - active/change_plan.md
+  - active/regression_checklist.md
+  - skills/deployment-workflow/summary.md
+
+Recommended:
+  - memory/recent_deltas.md (what changed since last deploy)
+  - memory/project_state.md (current state)
+  - skills/testing-strategy/summary.md
+```
+
+#### Security Profile
+```
+Required:
+  - skills/security-audit/summary.md
+
+Recommended:
+  - active/regression_checklist.md
+  - memory/architecture_decisions.md
+  - memory/dependency_map.md
+```
+
+#### Onboarding Profile
+```
+Required:
+  - docs/core/12_knowledge_extraction_protocol.md
+  - memory/architecture_decisions.md
+
+Recommended:
+  - memory/project_state.md
+  - memory/feature_registry.md
+  - docs/prd.md (if exists)
 ```
 
 #### Session-Resume Profile

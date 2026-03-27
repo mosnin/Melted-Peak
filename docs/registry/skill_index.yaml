@@ -129,3 +129,61 @@ skills:
     tags: [performance, profiling, optimization, bottleneck, measurement, workflow]
     triggers: [performance-issue, pre-launch-audit, hot-path-change, performance-requirements]
     description: Systematic performance investigation -- profiling, bottleneck identification, measurement
+
+  # --- Batch 3 skills (critical + high priority) ---
+
+  - name: deployment-workflow
+    path: skills/deployment-workflow/
+    status: ready
+    context_cost: small
+    tags: [deployment, ci-cd, rollback, production, release, workflow]
+    triggers: [work-type-deployment, pre-deploy, release, production-push]
+    description: Pre-deploy validation, deployment execution, post-deploy verification, and rollback procedures
+
+  - name: api-design
+    path: skills/api-design/
+    status: ready
+    context_cost: small
+    tags: [api, rest, endpoints, contracts, versioning, documentation]
+    triggers: [api-creation, endpoint-design, api-change, work-type-api-design]
+    description: API contract design, endpoint planning, versioning, error codes, and documentation
+
+  - name: database-migrations
+    path: skills/database-migrations/
+    status: ready
+    context_cost: small
+    tags: [database, migrations, schema, data-integrity, rollback]
+    triggers: [schema-change, migration-needed, database-update]
+    description: Schema change planning, migration safety, rollback procedures, and data integrity
+
+  - name: security-audit
+    path: skills/security-audit/
+    status: ready
+    context_cost: small
+    tags: [security, audit, vulnerability, owasp, secrets, authentication]
+    triggers: [work-type-security, pre-launch-audit, security-review, vulnerability-found]
+    description: OWASP checklist, dependency scanning, secrets detection, auth review, data protection
+
+  - name: documentation-generation
+    path: skills/documentation-generation/
+    status: ready
+    context_cost: small
+    tags: [documentation, readme, api-docs, adr, changelog, workflow]
+    triggers: [work-type-documentation, readme-needed, api-docs-needed, adr-creation]
+    description: README, API docs, ADRs, changelogs, contributing guides, and doc maintenance
+
+  - name: error-handling-design
+    path: skills/error-handling-design/
+    status: ready
+    context_cost: small
+    tags: [errors, error-handling, resilience, retry, logging, graceful-degradation]
+    triggers: [error-design, error-handling-review, resilience-planning]
+    description: Error classification, retry patterns, graceful degradation, logging strategy, user feedback
+
+  - name: technical-debt-assessment
+    path: skills/technical-debt-assessment/
+    status: ready
+    context_cost: small
+    tags: [technical-debt, code-quality, assessment, prioritization, maintenance]
+    triggers: [tech-debt-review, code-quality-assessment, maintenance-planning]
+    description: Debt identification, classification, cost-benefit analysis, prioritization, and paydown strategies
