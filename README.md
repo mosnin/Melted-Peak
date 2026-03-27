@@ -68,6 +68,23 @@ Melted-Peak/
 | **Knowledge** | Reference material and domain expertise |
 | **Registry** | Index of all available components |
 | **Readiness Gate** | Quality gate for new components |
+| **Peaks** | Importable domain sub-systems (frontend, backend, agents) |
+| **Metrics** | Effectiveness tracking, pattern detection, self-audit |
+
+## Current Inventory
+
+| Category | Count |
+|----------|-------|
+| Skills | 30 (28 core + 2 peak-provided) |
+| Knowledge Packs | 4 (2 general + 2 peak-provided) |
+| Protocols | 19 core docs |
+| Peaks | 1 (modaf-saas -- full SaaS framework) |
+| Prompts | 8 reusable workflow prompts |
+| Templates | 9 standard formats |
+| Examples | 4 filled-in reference examples |
+| Total Files | 258+ |
+
+See [docs/reference/skill_catalog.md](docs/reference/skill_catalog.md) for a complete skill guide organized by work phase and domain.
 
 ## Getting Started
 
