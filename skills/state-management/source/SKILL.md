@@ -1,249 +1,374 @@
 # Skill: State Management
 
 ## Purpose
-Provide a decision framework for choosing and implementing state management in frontend applications. Classify state by type, select the right tool for each category, and avoid common pitfalls that lead to bugs, stale data, and unmaintainable code.
+Decision framework for classifying application state, choosing the right management solution, and applying proven patterns. Covers server state, client state, URL state, form state, and derived state. Focused on making the right architectural choice rather than API reference.
 
 ## Trigger
-- Deciding where to store a new piece of state
-- Choosing between state management libraries
-- Debugging stale data, unnecessary re-renders, or state sync issues
-- Reviewing code for state duplication or prop drilling
-- Planning the state architecture for a new feature or application
+- Designing state architecture for a new feature or application
+- Choosing between state management approaches or libraries
+- Refactoring tangled, duplicated, or poorly structured state
+- Debugging stale data, synchronization bugs, or unnecessary re-renders
 
-## Workflow
+---
 
-### Step 1: Classify the State
+## 1. State Classification
 
-Every piece of state falls into one of these categories. Classifying correctly is the single most important decision -- it determines which tool to use.
+Every piece of state in an application belongs to one of five categories. Misclassifying state is the root cause of most state management problems.
 
-| Category | Definition | Examples | Lifespan |
-|----------|-----------|----------|----------|
-| **Server state** | Data owned by the backend, accessed via API | User profile, product list, order history | Outlives the session |
-| **Client state** | UI-only data that never hits the server | Modal open/closed, sidebar collapsed, selected tab | Current session or shorter |
-| **URL state** | State encoded in the URL for shareability | Search filters, pagination, selected item ID | Bookmarkable, shareable |
-| **Form state** | User input in progress, not yet submitted | Field values, validation errors, touched/dirty flags | Until submit or discard |
-| **Derived state** | Computed from other state, never stored independently | Filtered list, total price, "is valid" boolean | Recomputed on dependency change |
+### The Five Categories
 
-**Decision rule**: If it comes from an API, it is server state -- do not copy it into client state. If it can be computed from other state, it is derived -- do not store it separately.
+| Category | Definition | Examples | Owner |
+|----------|-----------|----------|-------|
+| **Server state** | Data that lives on the server and is cached on the client | User profile, product list, order history | The server (client has a cache) |
+| **Client state** | Data that exists only in the browser and has no server representation | Modal open/closed, sidebar collapsed, selected tab | The client |
+| **URL state** | Data encoded in the URL for shareability and navigation | Search query, active filters, pagination page, selected item ID | The URL |
+| **Form state** | Data being actively edited by the user before submission | Input values, validation errors, dirty/touched status | The form |
+| **Derived state** | Data computed from other state -- never stored independently | Filtered list, total price, "has unsaved changes" flag | Computed on read |
 
-### Step 2: Choose the Right Tool
+### Classification Checklist
+When you encounter a piece of state, ask:
+1. Does this data come from the server? -> **Server state**
+2. Should this survive a page refresh or be shareable via URL? -> **URL state**
+3. Is the user actively editing this before submission? -> **Form state**
+4. Can this be computed from other state that already exists? -> **Derived state**
+5. Is this purely local UI state with no other home? -> **Client state**
 
-```
-What type of state is it?
-|
-+-- Server state --> Tanstack Query / SWR / RTK Query
-|
-+-- Client state
-|     |
-|     +-- Shared across distant components? --> zustand / Jotai / Redux
-|     +-- Shared within a subtree? ----------> React Context
-|     +-- Local to one component? -----------> useState / useReducer
-|
-+-- URL state --> URL search params (nuqs, next/navigation, react-router)
-|
-+-- Form state --> react-hook-form / Formik (+ zod for validation)
-|
-+-- Derived state --> Compute inline (useMemo, selectors, getter functions)
-```
+### The Cardinal Rule
+**Never store server state in client state.** If data originates from the server, manage it with a server-state tool (Tanstack Query, SWR). Copying server data into useState or a global store creates a synchronization problem that only gets worse over time.
 
-**Do not reach for a state library by default.** Start with the simplest option that works. Escalate only when you hit a real problem, not a hypothetical one.
+---
 
-### Step 3: Implement Server State
+## 2. Decision Framework
 
-Server state is the most common source of bugs when handled incorrectly. Use a dedicated server-state library.
-
-#### Recommended: Tanstack Query (React Query)
+Use this flowchart after classifying the state:
 
 ```
-Core concepts:
-- queryKey: Unique cache key (array). Include all variables that affect the response.
-- queryFn: The fetch function. Returns a promise.
-- staleTime: How long data is considered fresh (default 0).
-- gcTime: How long unused data stays in cache (default 5 min).
+Does the data come from the server?
+  YES -> Use a server-state library (Tanstack Query / SWR)
+  NO  -> Continue
+
+Should this state be in the URL (shareable, bookmarkable, back-button)?
+  YES -> Use URL state (query params via nuqs, or router state)
+  NO  -> Continue
+
+Is this form data being edited before submission?
+  YES -> Use a form library (react-hook-form) or local component state
+  NO  -> Continue
+
+Can this be computed from existing state?
+  YES -> Derive it (useMemo, computed selector, getter function). Do NOT store it.
+  NO  -> Continue
+
+How many components need this state?
+  1-2 nearby components -> useState + props (simplest possible solution)
+  A subtree of components -> React Context (scoped provider)
+  Many components across the tree -> Client state library (zustand, signals)
 ```
 
-#### Cache Invalidation Strategies
+### Choosing the Simplest Solution
+Always start with the simplest tool that works. Escalate only when the simpler approach creates real problems (not hypothetical ones).
+
+**Escalation ladder for client state:**
+1. `useState` in the component that owns it
+2. Lift state to the nearest common parent, pass via props
+3. Composition / compound components to avoid prop threading
+4. React Context for a subtree that shares state
+5. External store (zustand) for truly global cross-cutting state
+
+Do not skip steps. Most state never needs to go past step 2.
+
+---
+
+## 3. Server State Patterns
+
+Server state is the most common source of complexity. Use a dedicated library.
+
+### Why a Server-State Library
+Managing server data with useState + useEffect means manually handling:
+- Loading/error states
+- Caching and cache invalidation
+- Deduplication of concurrent requests
+- Background refetching and staleness
+- Optimistic updates and rollbacks
+- Pagination and infinite scroll
+
+Server-state libraries (Tanstack Query, SWR) handle all of this out of the box.
+
+### Tanstack Query Core Concepts
+- **Queries** (`useQuery`): Declarative data fetching tied to a cache key. The cache key determines identity and deduplication.
+- **Mutations** (`useMutation`): Write operations with `onSuccess`, `onError`, `onSettled` callbacks for cache updates.
+- **Query keys**: Serializable arrays that uniquely identify data. Include all variables that affect the result: `['todos', { status, page }]`.
+- **Stale time**: How long cached data is considered fresh. During this window, the cache is returned without a network request. Default is 0 (always stale).
+- **Cache time (gcTime)**: How long unused cache entries stay in memory before garbage collection. Default is 5 minutes.
+
+### Cache Invalidation Strategies
 
 | Strategy | When to Use | How |
 |----------|------------|-----|
-| **Invalidate on mutation** | After create/update/delete | `queryClient.invalidateQueries({ queryKey: [...] })` |
-| **Optimistic update** | When UX speed matters and rollback is safe | Update cache before mutation, rollback on error |
-| **Poll / refetch on focus** | Data changes externally (other users, background jobs) | `refetchInterval`, `refetchOnWindowFocus` |
-| **Pessimistic update** | When correctness matters more than speed | Wait for mutation success, then invalidate |
+| **Invalidation** | After a mutation, refetch related queries | `queryClient.invalidateQueries({ queryKey: ['todos'] })` |
+| **Optimistic update** | When you want instant UI feedback | Update cache before mutation, rollback on error |
+| **Direct cache update** | When the mutation response contains the new data | `queryClient.setQueryData(['todo', id], newTodo)` |
+| **Polling** | For data that changes externally (dashboards, feeds) | `refetchInterval: 5000` |
 
-#### Optimistic Updates Pattern
-
+### Optimistic Updates Pattern
 ```
 1. Cancel in-flight queries for the same key
-2. Snapshot the current cache value
-3. Optimistically set the new value in cache
-4. Execute the mutation
-5. On error: roll back to snapshot, show error
-6. On settle: invalidate to get server truth
+2. Snapshot the current cache value (for rollback)
+3. Optimistically set the new cache value
+4. Perform the mutation
+5. On error: rollback to the snapshot
+6. On settled (success or error): invalidate to ensure consistency
 ```
+
+Key rule: always invalidate on settled, even after a successful optimistic update. The server is the source of truth.
 
 **When NOT to use optimistic updates**: financial transactions, irreversible actions, complex multi-entity mutations where rollback state is ambiguous.
 
-#### Common Server State Mistakes
+### SWR
+SWR follows a similar model with a "stale-while-revalidate" strategy. Use it when you want a lighter-weight option. The core concepts (cache keys, revalidation, mutation) are analogous to Tanstack Query.
 
-- Copying API data into useState (creates two sources of truth)
-- Not setting appropriate staleTime (causes unnecessary refetches or stale UI)
-- Using overly broad query keys (cache misses) or overly narrow ones (stale data)
-- Forgetting to invalidate related queries after a mutation
+---
 
-### Step 4: Implement Client State
+## 4. Client State Patterns
 
-#### Local Component State (useState / useReducer)
+Client state is UI-only state with no server representation. The goal is to keep it as local as possible.
 
-**Default choice.** Use for state that belongs to a single component.
+### React Context
+**When to use:**
+- A subtree of components needs to share state (theme, auth status, locale)
+- The state changes infrequently
+- You need dependency injection (swapping implementations for testing)
 
-Use `useReducer` when:
-- State transitions are complex (multiple fields change together)
-- Next state depends on previous state in non-trivial ways
-- You want to centralize transition logic for testing
+**When NOT to use:**
+- Frequently changing values (causes re-renders of every consumer)
+- State that only 1-2 components need (just use props)
+- As a replacement for a server-state library
 
-#### React Context
+**Pattern: Split context into state and dispatch.**
+Separate the value that changes frequently from the dispatch function that is stable. This prevents unnecessary re-renders of components that only dispatch actions.
 
-Use when state needs to be shared within a subtree and changes infrequently.
+### Zustand
+**When to use:**
+- Truly global cross-cutting state (multiple unrelated parts of the app need it)
+- Frequently updating state where Context re-renders are a problem
+- State that benefits from selectors (components subscribe to slices)
+- State shared across React and non-React code
 
-| Good For | Bad For |
-|----------|---------|
-| Theme, locale, auth status | Rapidly changing values (mouse position, animations) |
-| Feature flags | Large state objects where consumers only need a slice |
-| "Nearest provider" patterns | Anything that triggers frequent re-renders of many consumers |
+**Key advantages:**
+- No provider required (works outside the React tree)
+- Selector-based subscriptions (components only re-render when their slice changes)
+- Minimal boilerplate
+- Works with React DevTools via middleware
 
-**Performance rule**: Every context consumer re-renders when the context value changes. If this is a problem, split into multiple contexts or switch to an external store.
+**Pattern: Keep stores small and focused.**
+One store per domain concern, not one mega-store. A `useCartStore` and a `useUIStore`, not a single `useAppStore`.
 
-#### External Stores (zustand, Jotai, Redux)
+### Signals (Preact Signals, Angular Signals, Solid)
+**When to use:**
+- Fine-grained reactivity is needed (update a single DOM node without re-rendering the component)
+- Framework supports them natively (Solid, Preact, Angular)
+- Performance-critical scenarios where React's re-render model is too coarse
 
-Use when state is shared across distant components and/or changes frequently.
+**When NOT to use:**
+- Standard React applications (signals are not idiomatic React; use selectors or memo instead)
+- When the team is not familiar with the reactive programming model
 
-| Library | Best For | Mental Model |
-|---------|----------|-------------|
-| **zustand** | Simple shared state, few stores | Single store with selectors, minimal boilerplate |
-| **Jotai** | Many independent atoms of state | Bottom-up atomic state, derived atoms |
-| **Redux Toolkit** | Complex state with strict update patterns, large teams | Single store, reducers, middleware for side effects |
-| **Signals (Preact/Angular/Solid)** | Fine-grained reactivity without selectors | Reactive primitives, auto-tracking dependencies |
+### Decision Table: Client State Solutions
 
-**Selection heuristic**: If you need one or two shared stores with simple logic, use zustand. If you have many independent pieces of state that compose, use Jotai. If your team is large and you need strict patterns and middleware, use Redux Toolkit.
+| Need | Solution |
+|------|----------|
+| State used by one component | `useState` |
+| State shared between parent-child | Props |
+| State shared in a subtree, changes rarely | React Context |
+| State shared widely, changes often | Zustand (selector-based) |
+| Fine-grained DOM updates, non-React | Signals |
 
-### Step 5: Implement URL State
+---
 
-State that should survive page refresh, be shareable via link, or support browser back/forward belongs in the URL.
+## 5. URL State
 
-#### What Belongs in the URL
-
+State that belongs in the URL:
 - Search queries and filters
 - Pagination (page number, page size)
-- Sort order
 - Selected tab or view mode
-- Selected item ID (detail views)
+- Sort order
+- Item IDs for deep linking
 
-#### What Does NOT Belong in the URL
+### Why URL State Matters
+- **Shareability**: Users can share a link and the recipient sees the same view
+- **Bookmarkability**: Users can bookmark a filtered view and return to it
+- **Back button**: Browser navigation works correctly
+- **SEO**: Search engines can index filtered/paginated views
 
-- Auth tokens or sensitive data
-- Transient UI state (modal open, tooltip visible)
-- Large data blobs
+### Implementation with nuqs
+nuqs provides type-safe query parameter state management for Next.js:
+- Parses and serializes query params with type safety
+- Supports default values, shallow routing, and history push vs replace
+- Integrates with the Next.js router
 
-#### Implementation Pattern
+### URL State Principles
+- **Serialize only what is needed**: Do not put large objects in the URL. Use IDs and look up the rest.
+- **Use sensible defaults**: If a query param is absent, the app should show a reasonable default state. Do not require every param to be present.
+- **Choose push vs replace carefully**: Use `push` when the user should be able to go back (navigating to a new filter). Use `replace` when the state change is a refinement (typing in a search box).
+- **Validate on read**: URL params are user input. Parse and validate them. Malformed params should fall back to defaults, not crash.
 
-```
-1. Define the URL schema (param names, types, defaults)
-2. Parse params on mount (validate with zod if complex)
-3. Update URL on user interaction (replace for filters, push for navigation)
-4. Derive component state from URL params (URL is the source of truth)
-```
+---
 
-Use `replace` (not `push`) for filter/sort changes to avoid polluting browser history. Use `push` when the user would expect "back" to undo the action.
+## 6. Form State
 
-### Step 6: Implement Form State
+### Controlled vs Uncontrolled
 
-#### Recommended: react-hook-form + zod
+| Approach | How | When |
+|----------|-----|------|
+| **Controlled** | React state drives the input value (`value` + `onChange`) | Need real-time validation, conditional logic based on input, formatting as user types |
+| **Uncontrolled** | DOM owns the value, read via `ref` or `FormData` on submit | Simple forms, file inputs, when performance matters (avoids re-render per keystroke) |
 
-```
-Why react-hook-form:
-- Uncontrolled by default (fewer re-renders)
-- Built-in validation integration
-- Small bundle size
-- Handles complex forms (arrays, nested objects)
+### react-hook-form
+**When to use:**
+- Forms with validation requirements
+- Forms with many fields (performance advantage from uncontrolled approach)
+- Dynamic forms (add/remove fields)
+- Forms that need dirty tracking, touched status, submission state
 
-Why zod for validation:
-- Schema is the single source of truth (share with API validation)
-- Type inference (schema -> TypeScript type)
-- Composable (extend, merge, pick, omit)
-```
+**Key concepts:**
+- `register`: Connects a field to the form (uncontrolled by default, performant)
+- `handleSubmit`: Validates and calls your submit function
+- `formState`: Provides `errors`, `isDirty`, `isSubmitting`, `isValid`
+- `watch`: Subscribe to field values for conditional logic (use sparingly -- causes re-renders)
+- `Controller`: Wraps controlled components (select, datepicker) for integration
 
-#### Controlled vs Uncontrolled
+### Validation Strategy
 
-| Approach | When to Use |
-|----------|------------|
-| **Uncontrolled** (default with react-hook-form) | Most forms. Better performance. |
-| **Controlled** | When you need to react to every keystroke: live preview, dependent fields, character counters |
+| Layer | Tool | Purpose |
+|-------|------|---------|
+| Schema definition | zod | Single source of truth for shape and constraints |
+| Form integration | @hookform/resolvers/zod | Connects zod schema to react-hook-form |
+| Server validation | Same zod schema | Reuse on the server for defense in depth |
 
-#### Form State Boundaries
+**Rules:**
+- Always validate on the server. Client validation is a UX convenience, not a security measure.
+- Show field-level errors next to the field, not just at the top of the form.
+- Validate on blur for long forms (avoids frustrating the user while they type). Validate on submit for short forms.
+- Do not clear the form on validation error. Preserve the user's input.
 
-- Form state lives inside the form component. Do not lift it into global state.
-- On successful submit, the result becomes server state (invalidate relevant queries).
-- On error, keep form state intact so the user can correct and retry.
+### Form State Boundary
+Form state should not leak into global state. A form's values are ephemeral -- they exist while the user is editing and are consumed on submission. After submission, the result is server state (managed by the server-state library) or a navigation event.
 
-### Step 7: Handle Derived State
+---
 
-Derived state should never be stored. Compute it.
+## 7. Common Pitfalls
 
-```
-Bad:  const [items, setItems] = useState([...]);
-      const [filteredItems, setFilteredItems] = useState([...]);
-      // Now you must keep filteredItems in sync with items
+### State Duplication
+**Symptom**: The same data exists in two places that can get out of sync.
+**Common cause**: Copying server data into useState, storing derived values.
+**Fix**: Identify the single source of truth. If it is on the server, use a server-state library. If it can be computed, derive it.
 
-Good: const [items, setItems] = useState([...]);
-      const [filter, setFilter] = useState('');
-      const filteredItems = useMemo(
-        () => items.filter(item => item.name.includes(filter)),
-        [items, filter]
-      );
-```
+### Prop Drilling
+**Symptom**: State is passed through many intermediate components that do not use it.
+**Common cause**: State is owned too high in the tree, or composition patterns are not used.
+**Fix (in order of preference)**:
+1. Move state closer to where it is used
+2. Use composition (pass components as children/props instead of data)
+3. Use React Context for the subtree
+4. Use an external store only if the above fail
 
-**When to memoize derived state**: Only when the computation is expensive. `useMemo` has overhead; for cheap derivations (filtering small arrays, formatting strings), compute inline without memoization.
+### Over-Centralization
+**Symptom**: A single global store contains everything -- UI state, server cache, form data.
+**Common cause**: Treating Redux/zustand as the default for all state.
+**Fix**: Classify the state (Section 1). Move server state to a server-state library. Move form state to a form library. Move URL state to the URL. What remains for the global store is usually very small.
 
-## Common Pitfalls
+### Stale Closures
+**Symptom**: An event handler or effect captures an old value of state or props.
+**Common cause**: Missing dependencies in useEffect/useCallback, or using state inside a setTimeout/setInterval without a ref.
+**Fix**:
+- Ensure dependency arrays are complete (use the linter)
+- Use refs for values that need to be read in callbacks without re-creating the callback
+- Use the functional form of setState (`setCount(prev => prev + 1)`) instead of reading the variable
+- For intervals/timeouts, store the latest value in a ref and read from the ref inside the callback
 
-| Pitfall | Symptom | Fix |
-|---------|---------|-----|
-| **State duplication** | Data gets out of sync, UI shows stale values | Identify the single source of truth; derive everything else |
-| **Prop drilling** | Props passed through 3+ intermediate components that don't use them | Use Context (if infrequent updates) or an external store (if frequent) |
-| **Over-centralization** | All state in one global store; every change re-renders everything | Keep state as local as possible; only lift when needed |
-| **Stale closures** | Event handlers or effects capture old state values | Use refs for values that change but shouldn't trigger re-renders; use functional updates (`setState(prev => ...)`) |
-| **Sync state between sources** | useEffect to copy server state into local state | Use server state library directly; derive what you need |
-| **Missing loading/error states** | UI breaks or shows nothing during fetches | Server state libraries provide these out of the box; always handle all three states (loading, error, success) |
-| **URL state drift** | URL and UI get out of sync | Make URL the source of truth; derive UI state from URL, not the other way around |
+### Unnecessary Re-renders from State
+**Symptom**: Components re-render when state they do not use changes.
+**Common cause**: Storing unrelated state in the same object, using Context for frequently changing values without splitting.
+**Fix**:
+- Split Context into separate providers for values that change at different rates
+- Use zustand selectors to subscribe to specific slices
+- Use `React.memo` at the boundary where props stop changing
+- Avoid creating new object/array references on every render (memoize or hoist)
 
-## State Debugging Approach
+---
+
+## 8. State Debugging Approach
 
 When state behaves unexpectedly, follow this sequence:
 
-```
-1. Identify the source of truth
-   - Where is this state defined?
-   - Is there more than one copy? (If yes, that is likely the bug.)
+### Step 1: Identify the Source of Truth
+Ask: where should this data come from? Server? URL? Local state? If you cannot answer this question, the architecture has a classification problem (see Section 1).
 
-2. Trace the data flow
-   - How does data get from source to the component showing the bug?
-   - Are there any transformations, memoizations, or selectors in the path?
+### Step 2: Trace the State Chain
+Follow the data from source to the UI that renders it:
+1. Where is the state defined/fetched?
+2. How does it flow to the component that renders it? (props, context, selector, hook)
+3. What transforms or derives from it along the way?
+4. What triggers updates to it? (user action, server response, effect)
 
-3. Check the update mechanism
-   - What triggers a state change?
-   - Is the update referentially stable? (Object/array identity matters in React.)
-   - Is a stale closure capturing an old value?
+### Step 3: Check for Duplication
+Is the same data stored in more than one place? If yes, which copy is stale? The fix is usually to eliminate the duplicate and read from the single source.
 
-4. Inspect timing
-   - Is the state updated before or after the render that reads it?
-   - Are there race conditions between multiple async updates?
-   - Is a useEffect running at the wrong time in the lifecycle?
+### Step 4: Check Timing
+- Is an effect running at the wrong time? (missing or extra dependencies)
+- Is a mutation updating the cache before/after it should?
+- Is a stale closure capturing an old value?
 
-5. Verify cache behavior (for server state)
-   - Is the query key correct and specific enough?
-   - Is staleTime set appropriately?
-   - Is cache being invalidated after related mutations?
-```
+### Step 5: Isolate the Layer
+Narrow down which layer is broken:
+- **Fetching**: Is the network request returning the right data? (check Network tab)
+- **Caching**: Is the cache key correct? Is the cache stale? (check React Query DevTools)
+- **Rendering**: Is the component receiving the right props/state? (check React DevTools)
+- **Events**: Is the handler firing? Is it updating the right state? (add a console.log at the handler)
 
-**Tools**: React DevTools (component state), React Query DevTools (cache state), browser URL bar (URL state), Redux DevTools / zustand middleware (store state).
+### Tools
+- **React DevTools**: Inspect component state and props, trace re-renders
+- **Tanstack Query DevTools**: Inspect cache state, query status, cache keys
+- **Browser DevTools (Network tab)**: Verify server responses
+- **URL bar**: Verify URL state is correct
+- **zustand middleware (devtools)**: Inspect store state and action history
+
+---
+
+## 9. Integration with Melted Peak
+
+### State Architecture in Change Plans
+When writing a `active/change_plan.md` that involves state:
+- Classify every new piece of state using the five categories
+- Justify the chosen management approach
+- Note any state that is shared across component boundaries
+- Identify cache invalidation points for server state
+
+### Regression Checklist
+State changes are a common source of regressions. Add to `active/regression_checklist.md`:
+- Components that depend on the changed state
+- Cache invalidation flows that may be affected
+- URL state params that interact with the change
+- Form submission flows that consume the changed state
+
+### Known Issues
+Log recurring state problems in `memory/known_issues.md`:
+- Stale data after mutations (missing invalidation)
+- State synchronization bugs between URL and UI
+- Performance issues from unnecessary re-renders
+- Race conditions between concurrent updates
+
+---
+
+## Anti-Patterns
+
+- Storing server data in useState (creates synchronization problems)
+- Using a global store for everything (over-centralization)
+- Storing derived values instead of computing them (state duplication)
+- Using Context for frequently changing values without splitting (causes cascading re-renders)
+- Putting large objects in the URL (URL has a length limit and is user-visible)
+- Skipping server-side validation because the form validates on the client
+- Using useEffect to "sync" two pieces of state (usually means one should be derived)
+- Creating a new store/context before trying useState + props (premature abstraction)
+- Ignoring the dependency array linter (leads to stale closures and subtle bugs)
+- Clearing form inputs on validation error (destroys user work)
