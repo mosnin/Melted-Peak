@@ -57,6 +57,12 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Record in active_context.md Confidence Map
 - After task: compare confidence ratings with outcomes → calibrate
 
+## Decision Log (13)
+- Log when choosing between approaches, technologies, or conventions
+- ADR format: context → options considered → decision → consequences → revisit conditions
+- Quick decisions: log inline in active_context Session Notes, promote in retro if important
+- Never silently violate an existing ADR -- propose superseding it instead
+
 ## Knowledge Extraction (12)
 - Layer 1 (5 min): structure, stack, entry points, config
 - Layer 2 (10 min): architecture, data flow, abstractions, dependencies
