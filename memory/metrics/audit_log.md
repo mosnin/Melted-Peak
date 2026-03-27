@@ -29,3 +29,28 @@ Records of system self-audits. See `docs/core/20_self_audit_protocol.md` for the
 8. **Protocol Weight (Check 8)**: PASS -- 15 protocol files, average 95 lines. Two files over 150 lines (context_compiler at 180, self_audit at 183) but justified by content density. All protocols referenced in cheatsheet. No orphaned protocols.
 
 **System health**: healthy
+
+### Audit -- 2026-03-27 (post-expansion)
+
+**Trigger**: post-iteration (10 iterations of continuous improvement)
+**Issues found**: 0
+**Issues fixed**: 0
+
+**Findings**:
+
+1. **Registry vs directories**: PASS -- 28 core skill directories match 28+2 registry entries (2 peak-provided). 2 knowledge directories match 2+2 registry entries (2 peak-provided). 1 peak matches peak_index.
+2. **SKILL.md completeness**: PASS -- All 28 core skills have source/SKILL.md verified.
+3. **Protocol coverage**: PASS -- 21 protocol docs, all referenced in cheatsheet.
+4. **Peak integrity**: PASS -- modaf-saas peak.yaml exists with status: ready.
+5. **Knowledge packs**: PASS -- debugging-patterns and performance-patterns both complete with manifest, summary, and source.
+
+**System health**: healthy
+
+**Growth summary (10 iterations)**:
+- Skills: 1 → 30 (+29)
+- Knowledge packs: 0 → 4 (+4)
+- Protocols: 10 → 21 (+11)
+- Prompts: 2 → 9 (+7)
+- Examples: 1 → 5 (+4)
+- Peaks: 0 → 1 (modaf-saas, 85 files)
+- Total files: 48 → 263 (+215)
