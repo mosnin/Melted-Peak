@@ -315,3 +315,11 @@ skills:
     tags: [meta, testing, skills, quality, pressure-testing, verification]
     triggers: [skill-created, skill-modified, before-skill-deployment]
     description: Test skills with pressure scenarios using subagents -- RED baseline, GREEN write skill, REFACTOR close loopholes
+
+  - name: journey-report
+    path: skills/journey-report/
+    status: ready
+    context_cost: large
+    tags: [reporting, history, narrative, timeline, onboarding, retrospective]
+    triggers: [user-asks-for-timeline, project-history, onboarding-new-session]
+    description: Generate a narrative development history from Melted Peak memory files

@@ -1,0 +1,18 @@
+name: journey-report
+version: 1.0.0
+status: ready
+description: Generate a narrative development history from Melted Peak memory files — synthesizes progress logs, change logs, issues, and retrospectives into a journey report
+context_cost: large
+tags:
+  - reporting
+  - history
+  - narrative
+  - timeline
+  - onboarding
+  - retrospective
+triggers:
+  - user-asks-for-timeline
+  - user-asks-for-project-history
+  - onboarding-new-session
+  - comprehensive-retrospective
+dependencies: []

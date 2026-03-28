@@ -236,6 +236,45 @@ When context is tight, load `docs/core/99_protocol_cheatsheet.md` instead of ind
 
 ---
 
+## Progressive Disclosure
+
+Load context in layers to minimize token cost. Never load full source files when a summary will do.
+
+### Layer 1: Summaries Only (Always)
+- Load `summary.md` for each selected component (~60 words each)
+- Load section headers from active state files (not full content)
+- Total cost: ~500-1000 tokens for 10 components
+
+### Layer 2: Relevant Details (On Demand)
+- When a summary indicates relevance, load the source file
+- For memory files, load only entries matching the current work type tags
+- For skills, load source/SKILL.md only when the skill is being executed
+
+### Layer 3: Full Context (Rare)
+- Load complete file contents only when actively working within that file
+- Load full memory history only for retrospectives or audits
+
+### Implementation
+
+When the context compiler selects components, it should:
+1. Load ALL selected summaries (Layer 1)
+2. Present the summary list to determine which need expansion
+3. Expand to Layer 2 only for components directly relevant to the current task
+4. Never expand to Layer 3 unless explicitly needed (audit, retro, deep debugging)
+
+### Token Budget Guidelines
+
+| Work Type | Layer 1 Budget | Layer 2 Budget | Total Target |
+|-----------|---------------|---------------|--------------|
+| Bug fix | ~1000 tokens | ~3000 tokens | ~4000 tokens |
+| New feature | ~1500 tokens | ~5000 tokens | ~6500 tokens |
+| Refactor | ~1000 tokens | ~4000 tokens | ~5000 tokens |
+| Audit | ~2000 tokens | ~10000 tokens | ~12000 tokens |
+
+These are guidelines, not hard limits. The goal is awareness, not enforcement.
+
+---
+
 ## Anti-Patterns
 
 - Loading all frameworks "just in case" -- wastes context

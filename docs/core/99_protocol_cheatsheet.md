@@ -38,6 +38,7 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 3. Check active peaks for profile extensions and custom work types
 4. Check registry for relevant components (status=ready, context_cost fits)
 5. Update `active/active_context.md` with loaded context
+- Progressive disclosure: load summaries first (Layer 1), expand relevant components (Layer 2), full context only when needed (Layer 3)
 
 ## Parallel Work (09)
 - Parallelize only independent tasks (no shared files)
@@ -82,6 +83,12 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - After each file change outside MP → append `memory/recent_deltas.md`
 - After each task → update `memory/progress_log.md`
 - Scope change detected → STOP, re-run context compiler, update plans
+
+## Observation Taxonomy (26)
+- Every memory entry uses a type tag: [bugfix], [feature], [refactor], [change], [discovery], [decision]
+- Add 1-3 concept tags: #how-it-works, #why-it-exists, #what-changed, #problem-solution, #gotcha, #pattern, #trade-off
+- Format: `### YYYY-MM-DD HH:MM — [type] Title` + Concepts + Files + Description
+- Used in: recent_deltas.md, progress_log.md, change_log.md
 
 ## Memory Rotation (04)
 - Check file sizes during session handoff
