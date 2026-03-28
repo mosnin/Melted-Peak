@@ -70,10 +70,13 @@ This is the single most important rule for preventing circular problem-solving. 
 
 **Three-Strike Rule**: If three approaches have failed, STOP. Write a root cause analysis, present fundamentally different strategies to the user, and wait for direction. See `docs/core/15_error_recovery_protocol.md`.
 
+**Analysis Paralysis Guard**: If you notice 5+ consecutive read operations (Read, Grep, Glob) without a single write action (Edit, Write, Bash), STOP. Summarize what you know, form a hypothesis, and make the smallest possible change to test it. The cure is action, not more reading.
+
 ### One Issue at a Time
 - Only one `active/active_issue.md` may be active
 - If you discover a new issue during work, log it to `memory/known_issues.md` but do NOT switch to it
 - Switching requires explicit user authorization
+- Out-of-scope ideas go to `memory/seeds/` with trigger conditions (see seed-planting skill), not just `memory/known_issues.md`
 - See `docs/core/07_issue_isolation_protocol.md` for full protocol
 
 ### Plan Before Changing Code
@@ -81,6 +84,13 @@ This is the single most important rule for preventing circular problem-solving. 
 - The plan must list: files to change, nature of changes, expected outcome, rollback approach
 - Exempt: typos, comments, formatting
 - See `docs/core/23_change_control_system.md` for full protocol
+
+**Deviation Rules**: During plan execution, follow `docs/core/27_deviation_rules.md`:
+- Auto-fix bugs blocking progress (Rule 1)
+- Auto-add missing critical functionality (Rule 2)
+- Auto-fix environment/tooling blockers (Rule 3)
+- ASK about architectural/design/scope changes (Rule 4)
+- Default: ASK. Log ALL deviations in active_context.md.
 
 ### Verify After Changing Code
 - After changes, review `active/regression_checklist.md` for affected sensitive areas

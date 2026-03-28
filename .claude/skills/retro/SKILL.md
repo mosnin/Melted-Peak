@@ -15,3 +15,5 @@ Launch the `melted-peak-retro` subagent:
 5. Suggest system improvements if gaps found
 
 Run after any issue that took 2+ attempts.
+
+**Forensics Mode:** Use when a workflow failed or got stuck (stale handoff, 3+ failed attempts, abandoned plan). Examines git history + state files to diagnose root cause. Run with `/retro --forensics` or when forensics triggers are detected.

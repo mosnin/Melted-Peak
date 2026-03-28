@@ -137,6 +137,74 @@ Over time this table reveals:
 
 ---
 
+## Forensics Mode
+
+Use forensics mode when a session ended abnormally, a workflow got stuck, or work was abandoned mid-task. Unlike a normal retro (which analyzes completed work), forensics investigates WHAT WENT WRONG.
+
+### When to Use Forensics
+
+- Session ended without handoff (session_handoff.md is stale)
+- Active issue has 3+ attempted solutions with no resolution
+- Change plan is marked "in-progress" but no recent progress
+- Git log shows repeated reverts or abandoned branches
+- User reports "something went wrong last session"
+
+### Forensics Investigation Steps
+
+1. **Examine the crime scene** — Read active state files:
+   - `active/active_context.md` — what was the last known state?
+   - `active/active_issue.md` — what was being worked on? How many attempts?
+   - `active/change_plan.md` — was a plan in progress? How far did it get?
+   - `memory/session_handoff.md` — was a handoff written? Is it stale?
+
+2. **Check the timeline** — Examine git history:
+   - `git log --oneline -20` — what was committed recently?
+   - `git diff HEAD~5..HEAD --stat` — what files changed?
+   - Any reverted commits? Abandoned branches?
+
+3. **Look for patterns** — Check memory files:
+   - `memory/known_issues.md` — were issues discovered during the failed session?
+   - `memory/recent_deltas.md` — what changes were logged?
+   - `memory/metrics/pattern_journal.md` — any recurring failure patterns?
+
+4. **Diagnose the failure** — Classify into one of:
+   - **Stuck loop**: Same approach tried repeatedly (check Attempted Solutions)
+   - **Scope explosion**: Plan grew beyond original scope (check change_plan modifications)
+   - **Missing context**: Key information wasn't loaded (check active_context Loaded Components)
+   - **External blocker**: Environment, dependency, or tooling issue
+   - **Interrupted**: Session ended unexpectedly (no handoff written)
+   - **Circular debugging**: Three-strike rule should have triggered but didn't
+
+5. **Write the forensic report** — Append to `memory/metrics/retrospectives.md`:
+   ```
+   ### Forensic Report — [date]
+
+   **Trigger**: [why forensics was needed]
+   **Classification**: [stuck loop | scope explosion | missing context | external blocker | interrupted | circular debugging]
+   **Evidence**: [specific files, git SHAs, log entries that support the diagnosis]
+   **Root cause**: [what actually went wrong]
+   **Prevention**: [what should change to prevent recurrence]
+   **System update**: [any skills, protocols, or checklists to update]
+   ```
+
+6. **Apply fixes** — Based on the diagnosis:
+   - Update `active/regression_checklist.md` if a sensitive area was discovered
+   - Update the relevant skill if a process gap was found
+   - Plant a seed (`memory/seeds/`) if a larger improvement is needed
+   - Close stale active files and write a proper handoff
+
+### Forensics vs Normal Retro
+
+| Aspect | Normal Retro | Forensics |
+|--------|-------------|-----------|
+| Trigger | Work completed | Work FAILED or got stuck |
+| Focus | Lessons learned | Root cause of failure |
+| Evidence | What worked, what didn't | Git history, state files, timelines |
+| Output | Lessons fed back into system | Forensic report + prevention measures |
+| Tone | Reflective | Investigative |
+
+---
+
 ## Safety Rules
 
 The retrospective skill can suggest changes to the system itself. To prevent degradation:

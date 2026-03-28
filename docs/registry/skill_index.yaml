@@ -323,3 +323,11 @@ skills:
     tags: [reporting, history, narrative, timeline, onboarding, retrospective]
     triggers: [user-asks-for-timeline, project-history, onboarding-new-session]
     description: Generate a narrative development history from Melted Peak memory files
+
+  - name: seed-planting
+    path: skills/seed-planting/
+    status: ready
+    context_cost: small
+    tags: [memory, ideas, deferred, triggers, planning]
+    triggers: [out-of-scope-idea, improvement-during-debugging, deferred-idea]
+    description: Capture future ideas with trigger conditions that auto-resurface when relevant

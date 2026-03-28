@@ -38,6 +38,24 @@ When you recognize a circle:
 3. Step back and re-read the original problem description
 4. Consider: is the problem actually what we think it is, or is the real problem elsewhere?
 
+## Analysis Paralysis Detection
+
+**Signal**: 5+ consecutive read operations (Read, Grep, Glob) without a single write action.
+
+**What's happening**: The agent is stuck in an investigation loop, hoping the answer will appear from reading more files. This is a form of avoidance — reading feels productive but produces no output.
+
+**Recovery**:
+1. STOP reading
+2. State what you know so far (write it to active/active_context.md Session Notes)
+3. Form ONE hypothesis about the cause
+4. Test it with the smallest possible change
+5. If you can't form a hypothesis, escalate to the user with what you've found so far
+
+**Prevention**:
+- After every 3 reads, ask yourself: "Do I have enough to try something?"
+- Set a mental budget: "I will read at most N files before acting"
+- Prefer targeted reads (specific function, specific line) over full-file reads
+
 ## Error Escalation
 
 | Situation | Action |

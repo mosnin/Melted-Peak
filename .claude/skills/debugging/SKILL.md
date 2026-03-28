@@ -15,5 +15,6 @@ user-invocable: false
 4. **Harden** — update regression_checklist.md, close issue
 
 **Three-strike rule:** 3 failed attempts → STOP, root cause analysis, present options to user.
+**Analysis paralysis guard:** 5+ consecutive reads without a write = stop reading and act.
 
 See `skills/debugging/source/SKILL.md` for full workflow.

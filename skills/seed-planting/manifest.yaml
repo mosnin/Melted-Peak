@@ -1,0 +1,16 @@
+name: seed-planting
+version: 1.0.0
+status: ready
+description: Capture future ideas with structured trigger conditions that auto-resurface when relevant
+context_cost: small
+tags:
+  - memory
+  - ideas
+  - deferred
+  - triggers
+  - planning
+triggers:
+  - out-of-scope-idea-discovered
+  - improvement-found-during-debugging
+  - deferred-idea-during-brainstorming
+dependencies: []

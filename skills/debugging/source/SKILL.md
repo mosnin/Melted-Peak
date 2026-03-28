@@ -127,6 +127,23 @@ If you catch yourself thinking any of these, return to Phase 1:
 
 **Three or more fixes failed?** Stop entirely. Question the architecture. Present fundamentally different strategies to the user before trying anything else.
 
+## Analysis Paralysis Guard
+
+**5+ consecutive read operations (Read, Grep, Glob) without a single write (Edit, Write, Bash) = stuck signal.**
+
+When you notice this pattern:
+1. STOP reading more files
+2. State out loud: "I've been reading without acting. Here's what I know so far: [summary]"
+3. Form a hypothesis and test it with the SMALLEST possible change
+4. If you can't form a hypothesis after 5 reads, escalate to the user
+
+This guard applies to:
+- Debugging sessions where you keep reading files hoping the answer will appear
+- Exploration that never converges on action
+- Research that produces no concrete output
+
+**The cure is action, not more reading.** Make a small change, observe the result, then decide what to read next based on what happened.
+
 ## Rationalization Table
 
 | Excuse | Reality |

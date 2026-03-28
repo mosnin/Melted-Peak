@@ -8,6 +8,8 @@ user-invocable: true
 
 Create or update `active/change_plan.md` using `docs/templates/change_plan_template.md`.
 
+Before creating the plan, scan `memory/seeds/` for any seeds whose trigger conditions match the planned work. Present matching seeds to the user — they may want to incorporate them.
+
 Must include:
 - **Goal**: what this change achieves
 - **Files**: each file and what changes

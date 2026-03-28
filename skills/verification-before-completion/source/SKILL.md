@@ -85,3 +85,54 @@ If you notice yourself about to:
 - **Relates to**: `docs/core/25_regression_prevention.md`
 - **Pairs with**: `active/validation_plan.md` — run the plan before declaring done
 - **Hook**: The PostToolUse hook reminds you to verify after file changes
+
+## 4-Level Artifact Verification
+
+When verifying that work is complete, check artifacts at 4 increasing levels of rigor:
+
+### Level 1: Exists
+Does the file/function/component exist?
+- `ls path/to/file` — it's on disk
+- `grep "function myFunc"` — the function is defined
+
+**This is the minimum. Most "verification" stops here. Don't.**
+
+### Level 2: Substantive (Not a Stub)
+Is it actually implemented, not just scaffolded?
+- File has more than just boilerplate/imports
+- Function has a real implementation, not just `// TODO` or `return null`
+- Test file has actual assertions, not just `test('placeholder', () => {})`
+
+**Check for these stub patterns:**
+- `TODO`, `FIXME`, `PLACEHOLDER`, `NOT IMPLEMENTED`
+- Empty function bodies
+- Functions that only return null/undefined/empty
+- Test files with no assertions
+
+### Level 3: Wired (Connected)
+Is it imported and used by the rest of the system?
+- Component is imported somewhere, not just defined
+- API endpoint is registered in the router
+- Database migration is listed in the migration runner
+- Config value is actually read by the code that needs it
+
+**"Defined but never imported" = dead code, not a feature.**
+
+### Level 4: Data Flowing
+Does real data actually flow through it end-to-end?
+- The API endpoint receives a request and returns a response with real data
+- The component renders with actual props from the parent
+- The database query returns rows that are displayed to the user
+- The auth check actually blocks unauthorized access
+
+**This is the only level that proves the feature works.**
+
+### Verification Checklist Enhancement
+
+When running validation, check each deliverable at all 4 levels:
+
+| Deliverable | L1 Exists | L2 Substantive | L3 Wired | L4 Flowing |
+|-------------|-----------|----------------|----------|------------|
+| [item] | ✓/✗ | ✓/✗ | ✓/✗ | ✓/✗ |
+
+A deliverable that passes L1 but fails L2-L4 is NOT complete.

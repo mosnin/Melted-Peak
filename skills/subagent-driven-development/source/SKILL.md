@@ -121,3 +121,4 @@ Never do these:
 - **Writing Plans** (`skills/plan/`): The implementation plan consumed by this skill should follow the change plan format from the plan skill.
 - **Verification Before Completion** (`skills/verification-before-completion/`): The final integration review step must follow verification-before-completion discipline — run actual commands, read actual output.
 - **Retrospective** (`skills/retrospective/`): After completing all tasks, run a retrospective to extract lessons about task sizing, review effectiveness, and model selection accuracy.
+- **Deviation handling**: Follow `docs/core/27_deviation_rules.md` for auto-fix vs ask decisions

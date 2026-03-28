@@ -31,6 +31,7 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Log every attempt in `active/active_issue.md ## Attempted Solutions` BEFORE trying
 - Three failures = STOP, analyze root cause, present options to user
 - Circular pattern detected = STOP, re-read original problem, consider if real issue is elsewhere
+- Analysis paralysis: 5+ consecutive reads without writing = STOP, summarize what you know, form hypothesis, make smallest change
 
 ## Context Compiler (02)
 1. Classify work type: bug-fix | new-feature | refactor | investigation | ingestion | maintenance | deployment | security | onboarding
@@ -51,6 +52,14 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Scope creep signals: plan modified 2+ times, touching unplanned files, "while I'm here" thoughts
 - Legitimate expansion: STOP, update plan, inform user, get confirmation
 - Self-inflicted creep: log observations in known_issues.md, continue original scope
+
+## Deviation Rules (27)
+- Rule 1: Auto-fix bugs blocking progress (log it, add to regression checklist)
+- Rule 2: Auto-add missing critical functionality clearly required by plan (log it)
+- Rule 3: Auto-fix environment/tooling blockers (log it)
+- Rule 4: ASK about architectural/design/scope changes (always)
+- Default: ASK. Cost of pausing is low.
+- ALL deviations logged in active_context.md Session Notes
 
 ## Confidence Calibration (16)
 - Rate assumptions: high (verified) | medium (inferred) | low (guessed) | unknown
@@ -137,6 +146,7 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 - Gate function: IDENTIFY command → RUN fresh → READ full output → VERIFY claim → ONLY THEN claim
 - No "should work", "probably passes", or trusting agent self-reports
 - Evidence before assertions, always
+- 4-level check: exists → substantive (not stub) → wired (imported/used) → data flowing (real data end-to-end)
 
 ## TDD Enforcement (skill)
 - Iron Law: NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
