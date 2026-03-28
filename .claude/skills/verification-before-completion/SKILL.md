@@ -31,4 +31,12 @@ No completion claims without fresh verification evidence.
 | "Partial check enough" | Partial proves nothing |
 | "Just this once" | No exceptions |
 
+**4-Level Artifact Verification:**
+- L1: Exists (file/function on disk)
+- L2: Substantive (not a stub — has real implementation)
+- L3: Wired (imported and used by other code)
+- L4: Data flowing (real data goes through it end-to-end)
+
+A deliverable passing L1 but failing L2-L4 is NOT complete.
+
 See `skills/verification-before-completion/source/SKILL.md` for full detail.
