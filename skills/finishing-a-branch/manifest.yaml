@@ -1,0 +1,17 @@
+name: "finishing-a-branch"
+version: "1.0.0"
+status: "ready"
+description: "Structured decision workflow for completing branch work -- merge, PR, keep, or discard"
+context_cost: "small"
+
+tags: [git, branch, merge, pr, cleanup, workflow, completion]
+
+dependencies: []
+
+source_path: "source/SKILL.md"
+summary_path: "summary.md"
+
+triggers: [plan-completed, all-tasks-done, branch-ready-to-merge]
+
+created: "2026-03-28"
+updated: "2026-03-28"

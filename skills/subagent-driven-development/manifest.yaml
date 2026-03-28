@@ -1,0 +1,17 @@
+name: subagent-driven-development
+version: 1.0.0
+status: ready
+description: Execute implementation plans by dispatching fresh subagent per task with two-stage review (spec compliance then code quality) after each
+context_cost: medium
+tags:
+  - execution
+  - subagents
+  - review
+  - quality
+  - parallel
+  - workflow
+triggers:
+  - plan-execution
+  - implementation-start
+  - subagent-dispatch
+dependencies: []

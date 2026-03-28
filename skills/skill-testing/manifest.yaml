@@ -1,0 +1,17 @@
+name: skill-testing
+version: 1.0.0
+status: ready
+description: Test skills using pressure scenarios with subagents — RED (baseline without skill) GREEN (with skill) REFACTOR (close loopholes) — verifies agents actually follow rules under stress
+context_cost: small
+tags:
+  - meta
+  - testing
+  - skills
+  - quality
+  - pressure-testing
+  - verification
+triggers:
+  - skill-created
+  - skill-modified
+  - before-skill-deployment
+dependencies: []

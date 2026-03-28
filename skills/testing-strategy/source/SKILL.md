@@ -34,12 +34,32 @@ Not everything needs the same level of testing. Prioritize by risk:
 | **Snapshot** | UI regression detection | Fast | Low (fragile) |
 
 **Decision tree**:
-```
-Is it pure logic? → Unit test
-Does it cross boundaries (DB, API, components)? → Integration test
-Is it a critical user journey? → E2E test
-Is it UI with behavior? → Component test
-Is it static UI? → Snapshot or skip
+
+```dot
+digraph test_type {
+    rankdir=TB;
+    start [label="What are\nyou testing?" shape=diamond];
+    pure [label="Pure logic?" shape=diamond];
+    boundary [label="Crosses\nboundaries?" shape=diamond];
+    critical [label="Critical user\njourney?" shape=diamond];
+    ui_behavior [label="UI with\nbehavior?" shape=diamond];
+
+    unit [label="Unit test" shape=box style=filled fillcolor="#ccffcc"];
+    integration [label="Integration test" shape=box style=filled fillcolor="#ccffcc"];
+    e2e [label="E2E test" shape=box style=filled fillcolor="#ccffcc"];
+    component [label="Component test" shape=box style=filled fillcolor="#ccffcc"];
+    snapshot [label="Snapshot\nor skip" shape=box];
+
+    start -> pure;
+    pure -> unit [label="yes"];
+    pure -> boundary [label="no"];
+    boundary -> integration [label="yes"];
+    boundary -> critical [label="no"];
+    critical -> e2e [label="yes"];
+    critical -> ui_behavior [label="no"];
+    ui_behavior -> component [label="yes"];
+    ui_behavior -> snapshot [label="no"];
+}
 ```
 
 ### Step 3: Write the Test

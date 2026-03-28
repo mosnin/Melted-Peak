@@ -291,3 +291,27 @@ skills:
     tags: [design, planning, discovery, spec, requirements, socratic]
     triggers: [user-describes-new-feature, task-ambiguous, before-change-plan-for-nontrivial-work]
     description: Socratic design refinement before writing code -- ask questions, explore alternatives, produce validated spec
+
+  - name: subagent-driven-development
+    path: skills/subagent-driven-development/
+    status: ready
+    context_cost: medium
+    tags: [execution, subagents, review, quality, parallel, workflow]
+    triggers: [plan-execution, implementation-start, subagent-dispatch]
+    description: Execute plans with fresh subagent per task and two-stage review -- spec compliance then code quality
+
+  - name: finishing-a-branch
+    path: skills/finishing-a-branch/
+    status: ready
+    context_cost: small
+    tags: [git, branch, merge, pr, cleanup, workflow, completion]
+    triggers: [plan-completed, all-tasks-done, branch-ready-to-merge]
+    description: Structured decision workflow for completed branches -- merge, PR, keep, or discard with cleanup
+
+  - name: skill-testing
+    path: skills/skill-testing/
+    status: ready
+    context_cost: small
+    tags: [meta, testing, skills, quality, pressure-testing, verification]
+    triggers: [skill-created, skill-modified, before-skill-deployment]
+    description: Test skills with pressure scenarios using subagents -- RED baseline, GREEN write skill, REFACTOR close loopholes

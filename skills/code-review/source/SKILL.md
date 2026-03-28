@@ -68,6 +68,30 @@ For each changed file, check:
 
 ### Step 5: Summarize Findings
 
+```dot
+digraph review_decision {
+    rankdir=TB;
+    finding [label="Review\nfinding" shape=diamond];
+    security [label="Security issue\nor data loss?" shape=diamond];
+    logic [label="Logic error or\nbroken contract?" shape=diamond];
+
+    blocker [label="BLOCKER\nMust fix" shape=box style=filled fillcolor="#ffcccc"];
+    issue [label="ISSUE\nShould fix" shape=box style=filled fillcolor="#ffe0b2"];
+    suggestion [label="SUGGESTION\nNon-blocking" shape=box style=filled fillcolor="#ccffcc"];
+    merge_no [label="Block merge" shape=box style=filled fillcolor="#ffcccc"];
+    merge_yes [label="OK to merge" shape=box style=filled fillcolor="#ccffcc"];
+
+    finding -> security;
+    security -> blocker [label="yes"];
+    security -> logic [label="no"];
+    logic -> issue [label="yes"];
+    logic -> suggestion [label="no"];
+    blocker -> merge_no;
+    issue -> merge_no;
+    suggestion -> merge_yes;
+}
+```
+
 Write findings in one of these categories:
 
 | Category | Meaning | Action |

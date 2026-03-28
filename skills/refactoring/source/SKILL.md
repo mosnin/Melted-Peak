@@ -61,6 +61,32 @@ Refactoring is not rewriting. It is a series of small, behavior-preserving trans
 
 ### Phase 3: Execute Incrementally
 
+```dot
+digraph refactor_step {
+    rankdir=TB;
+    transform [label="Execute\ntransformation" shape=box];
+    run_tests [label="Run tests" shape=box];
+    pass [label="Tests pass?" shape=diamond];
+    commit [label="Commit" shape=box style=filled fillcolor="#ccffcc"];
+    revert [label="REVERT\nimmediately" shape=box style=filled fillcolor="#ffcccc"];
+    bug_found [label="Bug discovered\nduring refactor?" shape=diamond];
+    stop [label="STOP\nLog to known_issues\nDo NOT fix inline" shape=box style=filled fillcolor="#ffcccc"];
+    more [label="More steps?" shape=diamond];
+    done [label="Phase 4:\nVerify" shape=box style=filled fillcolor="#ccffcc"];
+
+    transform -> run_tests;
+    run_tests -> pass;
+    pass -> commit [label="yes"];
+    pass -> revert [label="no"];
+    revert -> transform [label="adjust\napproach"];
+    commit -> bug_found;
+    bug_found -> stop [label="yes"];
+    bug_found -> more [label="no"];
+    more -> transform [label="yes"];
+    more -> done [label="no"];
+}
+```
+
 6. **For each transformation step**:
    ```
    a. Describe the step (what and why)

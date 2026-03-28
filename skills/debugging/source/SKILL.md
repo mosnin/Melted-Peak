@@ -11,6 +11,25 @@ Systematic approach to diagnosing and fixing bugs that prevents circular debuggi
 
 ## Workflow
 
+```dot
+digraph debugging {
+    rankdir=TB;
+    characterize [label="Phase 1:\nCharacterize"];
+    isolate [label="Phase 2:\nIsolate"];
+    fix [label="Phase 3:\nFix"];
+    harden [label="Phase 4:\nHarden"];
+    three_strikes [label="3 attempts\nfailed?" shape=diamond];
+    stop [label="STOP\nEscalate to user" shape=box style=filled fillcolor="#ffcccc"];
+
+    characterize -> isolate;
+    isolate -> fix;
+    fix -> three_strikes;
+    three_strikes -> harden [label="no"];
+    three_strikes -> stop [label="yes"];
+    fix -> isolate [label="fix failed\nre-analyze"];
+}
+```
+
 ### Phase 1: Characterize (before touching code)
 
 1. **Write the issue** to `active/active_issue.md`:
