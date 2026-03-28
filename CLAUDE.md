@@ -98,6 +98,13 @@ This is the single most important rule for preventing circular problem-solving. 
 - If a regression is found, STOP -- do not fix inline. Log to `memory/known_issues.md`
 - See `docs/core/25_regression_prevention.md` for full protocol
 
+**4-Level Verification**: Check deliverables at all levels:
+1. Exists (file/function on disk)
+2. Substantive (not a stub — has real implementation)
+3. Wired (imported and used by other code)
+4. Data flowing (real data goes through it end-to-end)
+Passing Level 1 but failing Levels 2-4 means the work is NOT complete.
+
 ### Context Maintenance
 - Update `active/active_context.md` after completing each logical step
 - Append to `memory/recent_deltas.md` after every change to files outside Melted Peak
