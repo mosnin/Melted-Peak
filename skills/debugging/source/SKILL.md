@@ -95,10 +95,34 @@ Systematic approach to diagnosing and fixing bugs that prevents circular debuggi
 - **One bug at a time.** If you find another bug while debugging, log it to `memory/known_issues.md` and continue with the original.
 - **Minimal fix.** The fix should address the root cause and nothing else. Resist the urge to "improve" nearby code.
 
+## Red Flags — Stop and Re-Diagnose
+
+If you catch yourself thinking any of these, return to Phase 1:
+
+- "Quick fix for now, investigate later"
+- "Just try changing X and see if it works"
+- "It's probably X, let me fix that" (without verifying)
+- "One more fix attempt" (when you've already tried 2+)
+- "I don't fully understand but this might work"
+- Each fix reveals a new problem in a different place (architectural problem, not a bug)
+
+**Three or more fixes failed?** Stop entirely. Question the architecture. Present fundamentally different strategies to the user before trying anything else.
+
+## Rationalization Table
+
+| Excuse | Reality |
+|--------|---------|
+| "Issue is simple, no need to characterize" | Simple bugs have root causes too. Skipping Phase 1 causes misdiagnosis. |
+| "Emergency, no time for process" | Systematic debugging is faster than thrashing. Process saves time. |
+| "Just try this first, then investigate" | First attempt sets the pattern. Do it right from the start. |
+| "I see the problem, let me fix it" | Seeing symptoms ≠ understanding root cause. |
+| "Multiple changes at once saves time" | You won't know which change fixed it. Causes new bugs. |
+| "One more fix attempt" (after 2 failures) | Three failures = architectural problem. Escalate. |
+
 ## Anti-Patterns
 
-- Jumping to fix without reproducing -- you might fix the wrong thing
-- Changing multiple things at once -- you won't know which change fixed it
+- Jumping to fix without reproducing — you might fix the wrong thing
+- Changing multiple things at once — you won't know which change fixed it
 - Reverting to "try something else" without understanding why the last thing failed
-- Fixing symptoms instead of root cause -- the bug will return in a different form
-- Expanding scope during debugging -- "while I'm here" changes create new bugs
+- Fixing symptoms instead of root cause — the bug will return in a different form
+- Expanding scope during debugging — "while I'm here" changes create new bugs

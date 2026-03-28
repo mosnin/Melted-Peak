@@ -1,0 +1,17 @@
+name: verification-before-completion
+version: 1.0.0
+status: ready
+description: Enforce evidence-before-claims discipline — run verification commands before declaring work complete, tests passing, or bugs fixed
+context_cost: small
+tags:
+  - quality
+  - verification
+  - completion
+  - testing
+  - evidence
+triggers:
+  - before marking any task complete
+  - before committing or creating a PR
+  - before claiming tests pass or build succeeds
+  - before closing an issue or moving to the next task
+dependencies: []

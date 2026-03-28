@@ -36,9 +36,29 @@
 ## Dependencies
 <!-- Does this depend on other changes? -->
 
-## Execution Order
-<!-- Number the steps in order -->
-1.
+## Tasks
+
+<!-- Use checkbox format. Each task should be 2-5 minutes. Include exact file paths and complete code where relevant. -->
+<!-- Format: - [ ] **Task N**: [what to do] — `exact/file/path.ts` -->
+
+- [ ] **Task 1**:
+- [ ] **Task 2**:
+- [ ] **Task 3**:
+
+### Task Detail (for non-trivial tasks)
+
+<!-- For each task that requires code: show the complete code, exact commands, and expected output. -->
+<!-- No placeholders like "implement this" or "handle edge cases" — show the actual code. -->
+
+#### Task 1: [Title]
+
+**File**: `exact/path/to/file.ts`
+
+```typescript
+// Complete code here — not a skeleton
+```
+
+**Verify**: `npm test path/to/test.ts` — expected: PASS
 
 ## Rollback Strategy
 <!-- How to undo if something breaks -->

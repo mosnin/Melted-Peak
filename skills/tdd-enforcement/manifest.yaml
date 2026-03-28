@@ -1,0 +1,16 @@
+name: tdd-enforcement
+version: 1.0.0
+status: ready
+description: Enforce strict Red-Green-Refactor TDD — write the failing test first, watch it fail, then write minimal code to pass; no production code without a failing test
+context_cost: small
+tags:
+  - testing
+  - tdd
+  - quality
+  - discipline
+  - red-green-refactor
+triggers:
+  - before implementing any feature
+  - before fixing any bug
+  - before writing any code that changes behavior
+dependencies: []

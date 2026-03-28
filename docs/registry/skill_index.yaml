@@ -265,3 +265,29 @@ skills:
     tags: [dependencies, audit, vulnerabilities, licenses, bundle-size, maintenance]
     triggers: [dependency-review, security-scan, maintenance-audit, pre-launch]
     description: Dependency audit -- vulnerabilities, freshness, licenses, bundle impact, upgrade roadmap
+
+  # --- Superpowers-gap additions ---
+
+  - name: verification-before-completion
+    path: skills/verification-before-completion/
+    status: ready
+    context_cost: small
+    tags: [quality, verification, completion, testing, evidence, discipline]
+    triggers: [before-task-complete, before-commit, before-pr, before-claiming-success]
+    description: Run verification commands and confirm output before claiming work is complete, tests pass, or bugs are fixed
+
+  - name: tdd-enforcement
+    path: skills/tdd-enforcement/
+    status: ready
+    context_cost: small
+    tags: [testing, tdd, quality, discipline, red-green-refactor]
+    triggers: [before-implementing-feature, before-fixing-bug, before-writing-behavioral-code]
+    description: Strict RED-GREEN-REFACTOR TDD enforcement -- failing test first, watch it fail, minimal code to pass
+
+  - name: brainstorming
+    path: skills/brainstorming/
+    status: ready
+    context_cost: small
+    tags: [design, planning, discovery, spec, requirements, socratic]
+    triggers: [user-describes-new-feature, task-ambiguous, before-change-plan-for-nontrivial-work]
+    description: Socratic design refinement before writing code -- ask questions, explore alternatives, produce validated spec

@@ -124,6 +124,30 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 4. Regression growth: every bug fix → checklist entry
 5. Confidence mapping: rate assumptions → verify low-confidence first
 
+## Verification Before Completion (skill)
+- Before claiming done, committing, or closing a task: run the actual verification command
+- Gate function: IDENTIFY command → RUN fresh → READ full output → VERIFY claim → ONLY THEN claim
+- No "should work", "probably passes", or trusting agent self-reports
+- Evidence before assertions, always
+
+## TDD Enforcement (skill)
+- Iron Law: NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
+- RED: write ONE failing test. Watch it fail (mandatory). GREEN: write minimal code. REFACTOR: clean up.
+- Code before test? Delete it, start over.
+- No exceptions: not for simple things, not for "just this once"
+
+## Brainstorming (skill)
+- Before coding any non-trivial feature: ask questions, explore alternatives, present design in sections
+- Output is a written spec (docs/specs/), not implementation
+- Never jump to solutions before understanding the real problem
+- One section at a time, wait for feedback before continuing
+
+## Skill Description (CSO)
+- Description = WHEN to use (triggering conditions), NOT what the skill does
+- Start with "Use when..." — never summarize workflow in description
+- Token targets: boot skills < 200 words, others < 500 words
+- Discipline skills must include a Rationalization Table
+
 ## Native Claude Code Integration
 - Skills: `.claude/skills/` -- all MP commands available as /name
 - Agents: `.claude/agents/` -- specialized subagent types for audit, retro, peaks, exploration, skill creation

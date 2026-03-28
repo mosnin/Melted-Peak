@@ -1,0 +1,16 @@
+name: brainstorming
+version: 1.0.0
+status: ready
+description: Socratic design refinement before writing code — ask questions, explore alternatives, present design in sections for validation, produce a written spec
+context_cost: small
+tags:
+  - design
+  - planning
+  - discovery
+  - spec
+  - requirements
+triggers:
+  - user describes a new feature or capability to build
+  - task is ambiguous enough that jumping to implementation risks building the wrong thing
+  - before creating a change plan for anything non-trivial
+dependencies: []
