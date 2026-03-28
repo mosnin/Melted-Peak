@@ -136,7 +136,27 @@ Check last 3 uses in memory/metrics/effectiveness.md:
 
 **Fix**: Simplify low-adherence skills, deprecate unused skills, improve low-effectiveness skills.
 
-### 8. Protocol Weight Check
+### 8. Rules Glob Validation
+
+Verify that `.claude/rules/*.md` glob patterns actually match files in the repo:
+
+```
+For each file in .claude/rules/:
+  - Read the frontmatter `globs:` field
+  - Run the glob pattern against the repo
+  - Does it match at least one file?
+  - If no matches: the rule is DEAD — it silently never applies
+
+Example dead rule:
+  globs: "src/components/**"  # but project uses app/components/
+  → Rule never loads. All instructions in it are ignored.
+```
+
+**Severity**: Critical — dead rules fail silently. Instructions you think are enforced are actually ignored.
+
+**Fix**: Update glob patterns to match actual file paths, or remove rules that are no longer relevant.
+
+### 9. Protocol Weight Check
 
 ```
 For each docs/core/ protocol:

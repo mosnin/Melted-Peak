@@ -105,7 +105,8 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 
 ## Self-Audit (20)
 - Run every 5th session or on `/audit`
-- Check: registry integrity, cross-references, dependency map, active state freshness, memory health, skill quality, protocol weight
+- 9 checks: registry integrity, cross-references, dependency map, active state freshness, memory health, peak integrity, skill quality, **rules glob validation**, protocol weight
+- Rules glob validation: verify `.claude/rules/*.md` glob patterns match real files — dead rules fail silently!
 - Report to `memory/metrics/audit_log.md`
 - Severity: critical (fix now) > warning (fix during audit) > info (note for retro)
 

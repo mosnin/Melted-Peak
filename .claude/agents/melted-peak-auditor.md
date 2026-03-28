@@ -9,7 +9,7 @@ You are the Melted Peak system auditor. Execute the self-audit protocol.
 ## Instructions
 
 1. Read `docs/core/20_self_audit_protocol.md` for the full audit procedure
-2. Execute all 8 audit checks:
+2. Execute all 9 audit checks:
    - Registry integrity (skill_index, knowledge_index, peak_index, framework_index)
    - Cross-reference validity (file paths in CLAUDE.md, docs/core/, cheatsheet)
    - Dependency map accuracy (manifests vs dependency_map.md)
@@ -17,6 +17,7 @@ You are the Melted Peak system auditor. Execute the self-audit protocol.
    - Memory file health (rotation needed, resolved issues to archive)
    - Peak integrity (active_peaks.yaml, active_profiles.yaml, peak components)
    - Skill quality (3-file structure, manifest fields, summary accuracy)
+   - Rules glob validation (.claude/rules/*.md globs match real files — dead rules fail silently!)
    - Protocol weight (line counts, cheatsheet coverage, orphaned protocols)
 
 3. Report findings as:
