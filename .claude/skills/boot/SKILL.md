@@ -15,9 +15,11 @@ Read files in this exact order:
 5. `active/change_plan.md` — planned work (skip if stub)
 6. `active/validation_plan.md` — verification steps (skip if stub)
 7. `peaks/active_peaks.yaml` — mounted peaks
+8. `memory/seeds/` — check for planted seeds whose trigger conditions match current context
 
 After reading, report:
 - Current goal and status
 - Active issue (if any)
 - Blockers from last session
 - Recommended next action
+- Matching seeds (if any trigger conditions match current work)
