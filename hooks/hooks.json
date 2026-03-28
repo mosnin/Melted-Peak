@@ -1,0 +1,77 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⛰️ Melted Peak booting...'; echo ''; if [ -f active/active_context.md ]; then echo '--- Active Context ---'; head -30 active/active_context.md; echo ''; fi; if [ -f memory/session_handoff.md ]; then echo '--- Session Handoff ---'; head -30 memory/session_handoff.md; echo ''; fi; if [ -f active/active_issue.md ] && ! grep -q 'No active issue' active/active_issue.md 2>/dev/null; then echo '--- Active Issue ---'; head -20 active/active_issue.md; echo ''; fi"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/|\\.claude-plugin/|CLAUDE\\.md|README\\.md|QUICKSTART\\.md|\\.gitkeep|\\.gitignore|peaks/|hooks/)' && [ ! -s active/change_plan.md ] || grep -q 'No active change plan' active/change_plan.md 2>/dev/null; then echo '⚡ MELTED PEAK WARNING: You are modifying a code file without a change plan. Write a plan to active/change_plan.md first (exempt: typos, comments, formatting).'; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=\"$TOOL_INPUT_file_path\"; if echo \"$FILE\" | grep -qvE '(active/|memory/|docs/|incoming/|\\.claude/|\\.claude-plugin/|peaks/|hooks/)'; then echo '⚡ MELTED PEAK: File modified outside system. Update active/active_context.md and append to memory/recent_deltas.md.'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f active/active_issue.md ] && grep -c '### Attempt' active/active_issue.md 2>/dev/null | grep -qE '^[3-9]'; then echo '⚡ MELTED PEAK: THREE-STRIKE WARNING -- 3+ attempts logged in active_issue.md. Consider stopping to analyze root cause per docs/core/15_error_recovery_protocol.md'; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if grep -q 'No previous session\\|awaiting first task\\|Awaiting task' memory/session_handoff.md 2>/dev/null; then echo '⚡ MELTED PEAK: Session ending without handoff. Run the handoff protocol: update memory/session_handoff.md, memory/progress_log.md, and active/active_context.md.'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if git -C . status --porcelain 2>/dev/null | grep -q '^'; then echo '⚡ MELTED PEAK: Uncommitted changes detected. Consider committing before ending the session.'; fi"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚡ MELTED PEAK: Context compaction imminent. Preserving critical state.'; echo ''; echo '--- PRESERVE THIS CONTEXT ---'; echo ''; if [ -f active/active_context.md ]; then echo '## Active Context'; head -40 active/active_context.md; echo ''; fi; if [ -f active/active_issue.md ] && ! grep -q 'No active issue' active/active_issue.md 2>/dev/null; then echo '## Active Issue'; head -30 active/active_issue.md; echo ''; fi; if [ -f active/change_plan.md ] && ! grep -q 'No active change plan' active/change_plan.md 2>/dev/null; then echo '## Change Plan'; head -30 active/change_plan.md; echo ''; fi; echo '## Boot Reminder'; echo 'After compaction, re-read: active/active_context.md, memory/session_handoff.md, active/active_issue.md'; echo '--- END PRESERVE ---'"
+          }
+        ]
+      }
+    ]
+  }
+}

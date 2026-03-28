@@ -91,3 +91,41 @@ Same workflow, knowledge goes to `knowledge/`.
 | `/validate` | Run validation checks |
 | `/ingest` | Add a new component |
 | `/issues` | View known issues |
+
+## Native Claude Code Features
+
+Melted Peak integrates directly with Claude Code's native extension points. These features work automatically -- no configuration needed beyond having the Melted Peak directory structure in place.
+
+### Skills Are Auto-Discovered
+
+All Melted Peak commands are registered as native Claude Code skills in `.claude/skills/`. Type `/` during any session to see every available Melted Peak skill in the completion list. No need to memorize commands -- they are all discoverable inline.
+
+### Custom Agents for Specialized Work
+
+When spawning subagents, Melted Peak's custom agent definitions (in `.claude/agents/`) are available. These provide focused personas for auditing, retrospectives, peak ingestion, codebase exploration, and skill creation. Claude Code automatically discovers them.
+
+### Path-Scoped Rules Auto-Load
+
+Rules in `.claude/rules/` are scoped to specific directories. When you edit a file under `active/`, `memory/`, `frameworks/`, or other Melted Peak directories, the relevant rules load automatically. This means context maintenance rules, component structure rules, and protocol compliance rules are enforced without any manual steps.
+
+### Hooks Automate Context Maintenance
+
+Lifecycle hooks in `.claude/settings.json` handle the routine bookkeeping that Melted Peak requires:
+
+- **SessionStart**: Boots the system automatically -- no need to type `/boot`
+- **PreCompact**: Saves critical state before context compaction
+- **PostToolUse**: Tracks file changes and checks for regressions after every edit
+- **Stop**: Updates progress tracking when a task completes
+- **SessionEnd**: Runs the handoff protocol so the next session picks up seamlessly
+
+With hooks active, you can focus on your work and let the system handle its own maintenance.
+
+### Using Melted Peak as a Plugin in Other Projects
+
+To load Melted Peak's full capability set (skills, agents, rules, hooks) into a different project:
+
+```bash
+claude --plugin-dir /path/to/Melted-Peak
+```
+
+This makes all Melted Peak commands and automation available without copying any files into the target project.

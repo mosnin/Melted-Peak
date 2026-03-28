@@ -1,0 +1,13 @@
+# Melted Peak active state
+active/active_context.md
+active/active_issue.md
+active/change_plan.md
+
+# Memory files needed for context
+memory/session_handoff.md
+memory/recent_deltas.md
+memory/known_issues.md
+
+# Peak configuration
+peaks/active_peaks.yaml
+peaks/active_profiles.yaml

@@ -86,6 +86,58 @@ Melted-Peak/
 
 See [docs/reference/skill_catalog.md](docs/reference/skill_catalog.md) for a complete skill guide organized by work phase and domain.
 
+## Claude Code Native Integration
+
+Melted Peak ships with full native Claude Code integration, making the entire system accessible through Claude Code's built-in extension points.
+
+### Native Skills (`.claude/skills/`)
+
+All Melted Peak commands are registered as native Claude Code skills. Type `/` in any session to see the full list. Every command from the [Key Commands](#key-commands) table -- `/boot`, `/handoff`, `/compile`, `/plan`, `/validate`, `/ingest`, `/issues`, `/kickoff`, `/new-skill`, `/retro`, `/audit`, `/peak` -- is implemented as a skill file and auto-discovered by Claude Code.
+
+### Custom Agents (`.claude/agents/`)
+
+Specialized subagent definitions for tasks that benefit from a focused, scoped persona:
+
+| Agent | Purpose |
+|-------|---------|
+| **Auditor** | System self-audit -- verifies file integrity, registry consistency, protocol compliance |
+| **Retrospective** | Post-completion analysis -- extracts lessons and feeds them back into the system |
+| **Peak Ingestion** | Handles importing, normalizing, and mounting peaks from external sources |
+| **Codebase Explorer** | Deep codebase analysis -- architecture mapping, dependency tracing, pattern detection |
+| **Skill Creator** | Guided skill authoring -- interviews, scaffolds, validates, and registers new skills |
+
+### Path-Scoped Rules (`.claude/rules/`)
+
+Rules that auto-load when Claude Code edits files in specific directories. For example, editing files under `active/` automatically loads rules about context maintenance, while editing files under `frameworks/` loads rules about component structure and registry updates. No manual intervention required.
+
+### Lifecycle Hooks (`.claude/settings.json`)
+
+Comprehensive hooks automate context maintenance across the full session lifecycle:
+
+| Hook | Trigger | Action |
+|------|---------|--------|
+| **SessionStart** | Session begins | Runs the boot sequence, loads active context and session handoff |
+| **PreCompact** | Before context compaction | Preserves critical state so nothing is lost during compaction |
+| **PostToolUse** | After file edits | Updates `recent_deltas.md` and checks the regression checklist |
+| **Stop** | Agent completes a task | Updates `active_context.md` and `progress_log.md` |
+| **SessionEnd** | Session ends | Executes the full handoff protocol automatically |
+
+### Plugin Distribution (`.claude-plugin/plugin.json`)
+
+Melted Peak can be loaded as a plugin in any project via `claude --plugin-dir /path/to/Melted-Peak`. This bundles the skills, agents, rules, and hooks so other repositories can use the full system without copying files.
+
+### Headless Mode Integration
+
+All Melted Peak workflows are compatible with `claude --headless` for CI/CD pipelines. Use headless mode to run automated audits, scheduled retrospectives, or regression checks as part of your build process.
+
+### Agent Teams Integration
+
+Melted Peak supports Claude Code's agent teams for parallel work. Multiple subagents can operate on different aspects of a task simultaneously while the system maintains coordination through the active state files.
+
+### Worktree Support (`.worktreeinclude`)
+
+The `.worktreeinclude` file declares which Melted Peak files should be shared across git worktrees, enabling parallel branch work with shared context and memory.
+
 ## Getting Started
 
 See [QUICKSTART.md](QUICKSTART.md) for setup instructions.

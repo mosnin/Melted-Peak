@@ -16,6 +16,7 @@ Melted Peak is an Engineering Context Operating System -- a structured filesyste
 | `docs/templates/` | Standard file formats | When creating artifacts |
 | `peaks/` | Importable domain sub-systems (frontend, backend, agents) | Via peak manager |
 | `incoming/` | Staging for new components | During ingestion |
+| `.claude/` | Native Claude Code integration (skills, agents, rules, hooks) | Auto-discovered |
 
 ## Peaks
 

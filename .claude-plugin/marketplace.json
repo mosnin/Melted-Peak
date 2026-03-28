@@ -1,0 +1,12 @@
+{
+  "name": "melted-peak",
+  "description": "Melted Peak plugin marketplace",
+  "plugins": [
+    {
+      "name": "melted-peak",
+      "description": "Engineering Context Operating System",
+      "version": "1.0.0",
+      "path": "."
+    }
+  ]
+}

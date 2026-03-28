@@ -123,3 +123,13 @@ Then update: `memory/progress_log.md`, `memory/change_log.md`, `memory/project_s
 3. Post-completion retro: extract lessons → update skills and protocols
 4. Regression growth: every bug fix → checklist entry
 5. Confidence mapping: rate assumptions → verify low-confidence first
+
+## Native Claude Code Integration
+- Skills: `.claude/skills/` -- all MP commands available as /name
+- Agents: `.claude/agents/` -- specialized subagent types for audit, retro, peaks, exploration, skill creation
+- Rules: `.claude/rules/` -- path-scoped rules auto-load for active/, memory/, skills/, peaks/, docs/core/
+- Hooks: `.claude/settings.json` -- SessionStart boot, PreCompact context preservation, PostToolUse reminders, Stop handoff check
+- Plugin: `.claude-plugin/plugin.json` -- distributable as Claude Code plugin
+- Headless: `claude -p` -- CI/CD integration for automated audits, reviews, security scans
+- Agent teams: coordinate parallel work with shared task lists
+- Worktrees: `.worktreeinclude` copies active state to isolated worktrees

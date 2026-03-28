@@ -15,10 +15,44 @@ On every session start, read files in this exact order:
 4. `active/active_issue.md` -- understand current focus (skip if empty/stub)
 5. `active/change_plan.md` -- understand planned work (skip if empty/stub)
 6. `active/validation_plan.md` -- understand verification steps (skip if empty/stub)
-7. `peaks/active_peaks.yaml` -- check for mounted peaks and load their boot files
+7. `peaks/active_peaks.yaml` -- check for mounted peaks and load their boot files. Mounted peaks also register as native Claude Code skills accessible via `/peak-name:skill-name`.
 8. Load additional context via `docs/core/02_context_compiler.md` as needed
 
 Do NOT read all files on every boot. Use the context compiler to select relevant files.
+
+> **Claude Code Native Integration**: The boot sequence is also automated via the
+> `SessionStart` hook in `.claude/settings.json`. Hooks handle context maintenance
+> automatically -- see the "Hooks and Automation" section below for details.
+
+---
+
+## Claude Code Native Features
+
+Melted Peak integrates with Claude Code's native extension points for deeper automation.
+
+### Native Skills (`.claude/skills/`)
+Skills in `.claude/skills/` are auto-discovered by Claude Code and available via `/skill-name`. These complement the Melted Peak skill system by providing Claude Code-native invocation for common workflows.
+
+### Custom Subagents (`.claude/agents/`)
+Custom subagent types are defined in `.claude/agents/` for specialized tasks:
+- `melted-peak-auditor` -- system integrity audits
+- `melted-peak-retro` -- retrospective analysis
+- `peak-ingester` -- peak import and normalization
+- `codebase-explorer` -- deep codebase analysis
+- `skill-creator` -- new skill scaffolding
+
+### Path-Scoped Rules (`.claude/rules/`)
+Rules in `.claude/rules/` provide path-scoped instructions that auto-load when working with matching files. These enforce Melted Peak conventions automatically (e.g., rules for files under `active/`, `memory/`, `peaks/`).
+
+### Hooks and Automation (`.claude/settings.json`)
+Hooks in `.claude/settings.json` automate context maintenance tasks:
+- **SessionStart** -- triggers the boot sequence automatically
+- **PreCompact** -- preserves critical context before compaction
+- **PostToolUse** -- provides reminders for context updates after file changes
+- **Stop** -- runs handoff checks before session ends
+
+### Plugin Distribution (`.claude-plugin/plugin.json`)
+Melted Peak is also distributable as a Claude Code plugin via `.claude-plugin/plugin.json`. This allows other projects to install Melted Peak as a dependency and gain its full engineering context system.
 
 ---
 

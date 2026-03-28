@@ -1,0 +1,12 @@
+{
+  "name": "melted-peak",
+  "description": "Engineering Context Operating System - persistent memory, skills, and disciplined engineering practices for Claude Code",
+  "version": "1.0.0",
+  "author": {
+    "name": "mosnin"
+  },
+  "homepage": "https://github.com/mosnin/Melted-Peak",
+  "repository": "https://github.com/mosnin/Melted-Peak",
+  "license": "MIT",
+  "keywords": ["context", "memory", "engineering", "framework", "skills", "peaks"]
+}

@@ -86,3 +86,16 @@ project-kickoff, estimation, technical-debt-assessment, documentation-generation
 |-------|------------|
 | **modaf-saas/saas-phase-workflow** | Orchestrate the 15-phase SaaS build |
 | **modaf-saas/modaf-doctor** | Diagnose framework/project doc issues |
+
+## Native Claude Code Skills
+
+All Melted Peak skills are also available as native Claude Code skills at `.claude/skills/`. Type `/` in Claude Code to see the full list.
+
+### User Commands (invoke with /name)
+boot, quick-boot, handoff, status, compile, plan, validate, issues, audit, retro, kickoff, new-skill, ingest, peak, mp-debug, mp-simplify, batch-refactor
+
+### Auto-Applied (Claude loads when relevant)
+mp-conventions, debug-knowledge, perf-knowledge, saas-conventions
+
+### Custom Agents (available as subagent types)
+melted-peak-auditor, melted-peak-retro, peak-ingester, codebase-explorer, skill-creator
